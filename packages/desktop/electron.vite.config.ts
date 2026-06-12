@@ -62,7 +62,8 @@ const mainAliases = {
   '@renderer': rendererRoot,
   '@process': resolve('packages/desktop/src/process'),
   '@worker': resolve('packages/desktop/src/process/worker'),
-  '@xterm/headless': resolve('packages/desktop/src/common/utils/shims/xterm-headless.ts'),
+  '@action-engine': resolve('action-engine'),
+    '@xterm/headless': resolve('packages/desktop/src/common/utils/shims/xterm-headless.ts'),
 };
 
 export default defineConfig(({ mode }) => {

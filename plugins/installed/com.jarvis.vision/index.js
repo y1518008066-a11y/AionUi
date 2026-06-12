@@ -38,8 +38,7 @@ async function activate(context) {
   pluginContext = context;
   console.log('[Vision] Activated');
   try {
-    const aeMod = await import('../../action-engine/singleton');
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch (e) {
     console.warn('[Vision] ActionEngine not available:', e.message);
     return;

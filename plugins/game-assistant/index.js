@@ -102,8 +102,7 @@ async function activate(context) {
   pluginContext=context;
   console.log('[GameAssistant] Activated.');
   try {
-    const aeMod = await import('../../action-engine/singleton');
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch(e) { console.warn('[GameAssistant] AE unavailable:',e.message); return; }
   const actions = [
     { id:'game-assistant.getStatus', handler:ga_get_status, desc:'Get status', perms:['game'] },

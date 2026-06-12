@@ -74,8 +74,7 @@ async function activate(context) {
   console.log("[Clipboard] Activated.");
 
   try {
-    const aeMod = await import("../../action-engine/singleton");
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch (e) {
     console.warn("[Clipboard] ActionEngine not available:", e.message);
     return;

@@ -50,8 +50,7 @@ async function activate(context) {
   pluginContext = context;
   console.log('[Overlay] Activated');
   try {
-    const aeMod = await import('../../action-engine/singleton');
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch (e) {
     console.warn('[Overlay] ActionEngine not available:', e.message);
     return;

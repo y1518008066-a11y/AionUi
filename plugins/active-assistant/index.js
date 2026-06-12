@@ -118,8 +118,7 @@ async function activate(context) {
   pluginContext=context;
   console.log('[ActiveAssistant] Activated.');
   try {
-    const aeMod = await import('../../action-engine/singleton');
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch(e) { console.warn('[ActiveAssistant] AE unavailable:',e.message); return; }
   const actions = [
     { id:'active-assistant.getStatus', handler:aa_get_status, desc:'Get assistant status', perms:['assistant'] },

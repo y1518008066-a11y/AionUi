@@ -94,8 +94,7 @@ async function activate(context) {
 
   // Import ActionEngine singleton
   try {
-    const aeMod = await import("../../action-engine/singleton");
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch (e) {
     console.warn("[Memory] ActionEngine not available:", e.message);
     return;

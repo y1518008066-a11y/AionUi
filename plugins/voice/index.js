@@ -42,8 +42,7 @@ async function activate(context) {
   pluginContext = context;
   console.log('[Voice] Activated');
   try {
-    const aeMod = await import('../../action-engine/singleton');
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch (e) {
     console.warn('[Voice] ActionEngine not available:', e.message);
     return;

@@ -73,6 +73,14 @@ function getInstaller() {
 }
 
 export function initPluginBridge(): void {
+  // Initialize ActionEngine singleton and expose globally for plugins
+  try {
+    const { getActionEngine } = require('../../action-engine/singleton');
+    (globalThis as any).__actionEngine = getActionEngine();
+    console.log('[PluginBridge] ActionEngine global initialized');
+  } catch(e) {
+    console.warn('[PluginBridge] ActionEngine not available:', e.message);
+  }
   // install — copy plugin from source path to installed/
   ipcMain.handle('plugin:install', async (_event, params: { pluginId: string; sourcePath?: string }) => {
     try {

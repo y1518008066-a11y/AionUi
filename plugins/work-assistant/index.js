@@ -80,8 +80,7 @@ async function activate(context) {
   pluginContext=context;
   console.log('[WorkAssistant] Activated.');
   try {
-    const aeMod = await import('../../action-engine/singleton');
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch(e) { console.warn('[WorkAssistant] AE unavailable:',e.message); return; }
   const actions = [
     { id:'work-assistant.getStatus', handler:wa_get_status, desc:'Get status', perms:['work'] },

@@ -145,8 +145,7 @@ async function activate(context) {
   console.log("[Scheduler] Activated. Data dir:", getDataDir(), "| Tasks:", Object.keys(tasks).length);
 
   try {
-    const aeMod = await import("../../action-engine/singleton");
-    actionEngine = aeMod.getActionEngine();
+    actionEngine = context.actionEngine || null;
   } catch (e) {
     console.warn("[Scheduler] ActionEngine not available:", e.message);
     return;
