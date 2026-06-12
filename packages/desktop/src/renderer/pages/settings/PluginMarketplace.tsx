@@ -5,27 +5,27 @@ import SettingsPageWrapper from "./components/SettingsPageWrapper";
 
 const NAME_ZH = {};
 const LAB_ZH = {
-  "Enabled":"已启�?,"Disabled":"已禁�?,"Install":"安装","Uninstall":"卸载","Update":"更新","Enable":"启用","Disable":"禁用",
-  "Installed":"已安�?,"Available":"可安�?,"Author":"作�?,"Version":"版本","Deps":"依赖","Refreshed":"已刷�?,"Refresh":"刷新",
-  "Plugin installed":"插件已安�?,"Plugin uninstalled":"插件已卸�?,"Plugin Marketplace":"插件市场",
-  "Install, manage and update plugins for Jarvis.":"安装、管理和更新 Jarvis 插件�?,
-  "Search plugins...":"搜索插件...","No plugins installed.":"暂无已安装插件�?,
-  "No plugins available in marketplace.":"市场暂无可用插件�?,"Permission Consent":"权限确认",
+  "Enabled":"已启用","Disabled":"已禁用","Install":"安装","Uninstall":"卸载","Update":"更新","Enable":"启用","Disable":"禁用",
+  "Installed":"已安装","Available":"可安装","Author":"作者","Version":"版本","Deps":"依赖","Refreshed":"已刷新","Refresh":"刷新",
+  "Plugin installed":"插件已安装","Plugin uninstalled":"插件已卸载","Plugin Marketplace":"插件市场",
+  "Install, manage and update plugins for Jarvis.":"安装、管理和更新 Jarvis 插件。",
+  "Search plugins...":"搜索插件...","No plugins installed.":"暂无已安装插件。",
+  "No plugins available in marketplace.":"市场暂无可用插件。","Permission Consent":"权限确认",
   "This plugin requires the following permissions:":"此插件需要以下权限：",
-  "Official":"官方","Verified":"已验�?,"Community":"社区",
-  "Current":"当前","Latest":"最�?,"Update Available":"有更新可�?,
-  "Dependencies Required":"需要安装依�?,"The following plugins are required:":"需要安装以下插件：",
+  "Official":"官方","Verified":"已验证","Community":"社区",
+  "Current":"当前","Latest":"最新","Update Available":"有更新可用",
+  "Dependencies Required":"需要安装依赖","The following plugins are required:":"需要安装以下插件：",
   "Install All":"全部安装","Changelog":"更新日志",
   "Capabilities":"能力","Permissions":"权限","Dependencies":"依赖",
-  "Downloads":"下载�?,"Rating":"评分","Reviews":"评价",
+  "Downloads":"下载量","Rating":"评分","Reviews":"评价",
   "Detail":"详情","Back":"返回",
-  "Market unavailable, please check your connection.":"市场暂不可用，请检查网络连接�?
+  "Market unavailable, please check your connection.":"市场暂不可用，请检查网络连接。"
 };
 function zh(t: string): string { return NAME_ZH[t] || LAB_ZH[t] || t; }
 
 function fmtNum(n: number | undefined): string {
   if (!n) return "0";
-  if (n >= 10000) return (n / 10000).toFixed(1) + "�?;
+  if (n >= 10000) return (n / 10000).toFixed(1) + "万";
   if (n >= 1000) return (n / 1000).toFixed(1) + "k";
   return n.toLocaleString();
 }
@@ -39,7 +39,7 @@ function VerifiedBadge({ v }: { v?: string }) {
 
 function StarRating({ rating, reviews }: { rating?: number; reviews?: number }) {
   if (!rating) return null;
-  const stars = "�?.repeat(Math.round(rating)) + "�?.repeat(5 - Math.round(rating));
+  const stars = "★".repeat(Math.round(rating)) + "☆".repeat(5 - Math.round(rating));
   return (
     <span className="text-12px text-yellow-500 inline-flex items-center gap-2px">
       {stars}
@@ -52,11 +52,11 @@ function StarRating({ rating, reviews }: { rating?: number; reviews?: number }) 
 interface PluginInfo { id:string;name:string;version:string;author:string;description:string;longDescription?:string;enabled:boolean;installed:boolean;capabilities:string[];permissions:string[];dependencies:string[];downloads?:number;rating?:number;reviews?:number;verified?:string;changelog?:{v:string;date:string;notes:string[]}[];homepage?:string;repository?:string;license?:string }
 
 const BUILTIN:PluginInfo[]=[
-  {id:"com.jarvis.browser",name:"浏览器插�?,version:"1.0.0",author:"Jarvis Team",description:"基于 Playwright 的真实浏览器执行层�?,enabled:false,installed:true,capabilities:["browser","screen","network"],permissions:["screen:capture","network:outbound","filesystem:read","filesystem:write","process:spawn"],dependencies:[]},
-  {id:"com.jarvis.computer-use",name:"桌面操控插件",version:"1.1.0",author:"Jarvis Team",description:"桌面状态感知、截图采集、窗口枚举�?,enabled:false,installed:true,capabilities:["computer-use","screen"],permissions:["screen:capture","filesystem:write","network:outbound"],dependencies:[]},
-  {id:"com.jarvis.memory",name:"记忆存储",version:"1.0.0",author:"Jarvis",description:"持久化键值对记忆存储�?,enabled:true,installed:true,capabilities:["memory"],permissions:["filesystem:read","filesystem:write"],dependencies:[]},
-  {id:"com.jarvis.scheduler",name:"任务调度�?,version:"1.0.0",author:"Jarvis",description:"定时任务调度管理�?,enabled:true,installed:true,capabilities:["scheduler"],permissions:["filesystem:read","filesystem:write","ui:notification"],dependencies:[]},
-  {id:"com.jarvis.clipboard",name:"剪贴�?,version:"1.0.0",author:"Jarvis",description:"剪贴板读写工具�?,enabled:true,installed:true,capabilities:["clipboard"],permissions:["clipboard:read","clipboard:write"],dependencies:[]}
+  {id:"com.jarvis.browser",name:"浏览器插件",version:"1.0.0",author:"Jarvis Team",description:"基于 Playwright 的真实浏览器执行层。",enabled:false,installed:true,capabilities:["browser","screen","network"],permissions:["screen:capture","network:outbound","filesystem:read","filesystem:write","process:spawn"],dependencies:[]},
+  {id:"com.jarvis.computer-use",name:"桌面操控插件",version:"1.1.0",author:"Jarvis Team",description:"桌面状态感知、截图采集、窗口枚举。",enabled:false,installed:true,capabilities:["computer-use","screen"],permissions:["screen:capture","filesystem:write","network:outbound"],dependencies:[]},
+  {id:"com.jarvis.memory",name:"记忆存储",version:"1.0.0",author:"Jarvis",description:"持久化键值对记忆存储。",enabled:true,installed:true,capabilities:["memory"],permissions:["filesystem:read","filesystem:write"],dependencies:[]},
+  {id:"com.jarvis.scheduler",name:"任务调度器",version:"1.0.0",author:"Jarvis",description:"定时任务调度管理。",enabled:true,installed:true,capabilities:["scheduler"],permissions:["filesystem:read","filesystem:write","ui:notification"],dependencies:[]},
+  {id:"com.jarvis.clipboard",name:"剪贴板",version:"1.0.0",author:"Jarvis",description:"剪贴板读写工具。",enabled:true,installed:true,capabilities:["clipboard"],permissions:["clipboard:read","clipboard:write"],dependencies:[]}
 ];
 
 const CAPS=["browser","computer-use","clipboard","memory","voice","ocr","scheduler","overlay","screen","vision","desktop","network","notification","audio","ui"];
@@ -116,7 +116,7 @@ const PluginMarketplace=()=>{
         <p className="text-12px text-t-secondary mb-6px line-clamp-2">{p.description}</p>
         <div className="flex items-center gap-12px text-11px text-t-tertiary mb-6px"><span>{zh("Author")}: {p.author}</span></div>
         <div className="flex flex-wrap gap-3px mb-4px">{(p.capabilities||[]).map((c:any)=><Tag key={c} size="small" className="!text-10px !px-4px !py-0px">{c}</Tag>)}</div>
-        {lv&&<Tag size="small" color="arcoblue" className="!text-10px mt-4px">v{p.version} �?v{lv}</Tag>}
+        {lv&&<Tag size="small" color="arcoblue" className="!text-10px mt-4px">v{p.version} → v{lv}</Tag>}
       </div>
       <div className="flex flex-col gap-6px shrink-0 items-end" onClick={e=>e.stopPropagation()}>
         {installed?<>
@@ -161,8 +161,8 @@ const PluginMarketplace=()=>{
           {filtered.length===0?<div className="text-13px text-t-tertiary py-24px text-center">{zh("No plugins installed.")}</div>:<div className="grid grid-cols-1 md:grid-cols-2 gap-12px">{filtered.map(p=>{const mp=market.find(m=>m.id===p.id);return renderCard(mp?{...p,rating:mp.rating||p.rating,downloads:mp.downloads||p.downloads,verified:mp.verified||p.verified,changelog:mp.changelog||p.changelog,version:mp.version||p.version}:p,true)})}</div>}
         </div>
         <div className="mt-8px">
-          <h3 className="text-16px font-600 text-t-primary mb-12px flex items-center gap-8px"><FolderOpen theme="outline" size="18"/>{zh("Available")}<Tag size="small">{market.length}</Tag>{mktLoading&&<Tag size="small" color="arcoblue">加载�?..</Tag>}{mktErr&&<Tag size="small" color="red">{mktErr}</Tag>}</h3>
-          {market.length===0&&!mktLoading?<div className="text-13px text-t-tertiary py-24px text-center">{mktErr?"市场暂不可用，请检查网络连接�?:zh("No plugins available in marketplace.")}</div>:<div className="grid grid-cols-1 md:grid-cols-2 gap-12px">{market.map(p=>{const inst=plugins.find(l=>l.id===p.id);return inst?renderCard({...p,...inst,installed:true},true):renderCard(p,false)})}</div>}
+          <h3 className="text-16px font-600 text-t-primary mb-12px flex items-center gap-8px"><FolderOpen theme="outline" size="18"/>{zh("Available")}<Tag size="small">{market.length}</Tag>{mktLoading&&<Tag size="small" color="arcoblue">加载中...</Tag>}{mktErr&&<Tag size="small" color="red">{mktErr}</Tag>}</h3>
+          {market.length===0&&!mktLoading?<div className="text-13px text-t-tertiary py-24px text-center">{mktErr?"市场暂不可用，请检查网络连接。":zh("No plugins available in marketplace.")}</div>:<div className="grid grid-cols-1 md:grid-cols-2 gap-12px">{market.map(p=>{const inst=plugins.find(l=>l.id===p.id);return inst?renderCard({...p,...inst,installed:true},true):renderCard(p,false)})}</div>}
         </div>
       </div>
       <DetailDrawer/>
