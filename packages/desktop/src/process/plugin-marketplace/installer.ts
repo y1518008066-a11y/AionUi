@@ -35,7 +35,7 @@ import { loadManifest } from '../plugin-runtime/manifest';
 // Constants
 // ---------------------------------------------------------------------------
 
-const PLUGINS_ROOT = resolve(process.cwd(), 'plugins');
+const PLUGINS_ROOT = resolve(path.dirname(path.dirname(absSource)), 'plugins');
 const INSTALLED_DIR = join(PLUGINS_ROOT, 'installed');
 const DOWNLOADED_DIR = join(PLUGINS_ROOT, 'downloaded');
 const DISABLED_DIR = join(PLUGINS_ROOT, 'disabled');
@@ -148,7 +148,7 @@ class PluginInstaller {
           absSource = shortPath;
         } else {
           // Scan parent directory for matching plugin.json
-          const pluginsDir = resolve(process.cwd(), 'plugins');
+          const pluginsDir = resolve(path.dirname(path.dirname(absSource)), 'plugins');
           if (existsSync(pluginsDir)) {
             const entries = readdirSync(pluginsDir, { withFileTypes: true });
             for (const entry of entries) {

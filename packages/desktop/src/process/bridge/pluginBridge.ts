@@ -4,9 +4,25 @@
  * renderer can install/uninstall plugins via IPC.
  */
 
-import { ipcMain } from 'electron';
+import { ipcMain, app } from 'electron';
 import { PluginInstaller } from '../plugin-marketplace/installer';
 import { resolve, join } from 'path';
+
+/** Get the project root, accounting for Electron packaging. */
+function getAppRoot(): string {
+  try {
+    // In development: app.getAppPath() returns the project root
+    // In production: returns the app.asar directory
+    const appPath = app.getAppPath();
+    // If we're inside out/, go up one level to project root
+    if (appPath.endsWith('out') || appPath.endsWith('out/') || appPath.endsWith('out\\')) {
+      return resolve(appPath, '..');
+    }
+    return appPath;
+  } catch {
+    return process.cwd();
+  }
+}
 import { existsSync } from 'fs';
 
 /**
@@ -16,11 +32,11 @@ import { existsSync } from 'fs';
 function resolvePluginDir(pluginId: string): string {
   // Strategy 1: strip "com.jarvis." prefix
   const shortName = pluginId.replace(/^com\.jarvis\./, '');
-  const shortPath = resolve(process.cwd(), 'plugins', shortName);
+  const shortPath = resolve(getAppRoot(), 'plugins', shortName);
   if (existsSync(join(shortPath, 'plugin.json'))) return shortPath;
 
   // Strategy 2: try full id as directory name (legacy)
-  const fullPath = resolve(process.cwd(), 'plugins', pluginId);
+  const fullPath = resolve(getAppRoot(), 'plugins', pluginId);
   if (existsSync(join(fullPath, 'plugin.json'))) return fullPath;
 
   // Strategy 3: scan plugins dir for matching id in plugin.json
@@ -119,7 +135,7 @@ export function initPluginBridge(): void {
       console.log('[PluginBridge] Enabling:', pluginId);
       // Currently enable just validates that the plugin exists in installed/
       const { existsSync } = require('fs');
-      const installedPath = resolve(process.cwd(), 'plugins', 'installed', pluginId);
+      const installedPath = resolve(getAppRoot(), 'plugins', 'installed', pluginId);
       if (!existsSync(installedPath)) {
         return { success: false, error: 'Plugin not installed: ' + pluginId };
       }
