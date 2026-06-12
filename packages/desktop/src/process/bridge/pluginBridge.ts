@@ -112,5 +112,31 @@ export function initPluginBridge(): void {
     }
   });
 
+  
+  // enable plugin
+  ipcMain.handle('plugin:enable', async (_event, pluginId: string) => {
+    try {
+      console.log('[PluginBridge] Enabling:', pluginId);
+      // Currently enable just validates that the plugin exists in installed/
+      const { existsSync } = require('fs');
+      const installedPath = resolve(process.cwd(), 'plugins', 'installed', pluginId);
+      if (!existsSync(installedPath)) {
+        return { success: false, error: 'Plugin not installed: ' + pluginId };
+      }
+      return { success: true };
+    } catch (err) {
+      return { success: false, error: String(err) };
+    }
+  });
+
+  // disable plugin
+  ipcMain.handle('plugin:disable', async (_event, pluginId: string) => {
+    try {
+      console.log('[PluginBridge] Disabling:', pluginId);
+      return { success: true };
+    } catch (err) {
+      return { success: false, error: String(err) };
+    }
+  });
   console.log('[PluginBridge] IPC handlers registered');
 }

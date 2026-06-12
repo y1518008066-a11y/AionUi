@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license
  * Copyright 2025 AionUi (aionui.com)
  * SPDX-License-Identifier: Apache-2.0
@@ -46,6 +46,9 @@ contextBridge.exposeInMainWorld('electronAPI', {
   uninstallPlugin: (pluginId, fullRemove) => ipcRenderer.invoke("plugin:uninstall", { pluginId, fullRemove }),
   getInstalledPlugins: () => ipcRenderer.invoke("plugin:list-installed"),
   getPluginVersion: (pluginId) => ipcRenderer.invoke("plugin:get-version", pluginId),
+  // Plugin enable/disable
+  enablePlugin: (pluginId) => ipcRenderer.invoke("plugin:enable", pluginId),
+  disablePlugin: (pluginId) => ipcRenderer.invoke("plugin:disable", pluginId),
   // Feedback: collect and compress recent log files
   collectFeedbackLogs: () => ipcRenderer.invoke('feedback:collect-logs'),
   // Feedback: capture a screenshot of the current window

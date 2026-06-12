@@ -108,8 +108,8 @@ const PluginMarketplace=()=>{
   const installAllDeps=async()=>{for(const dep of depModal.deps){await doInstall(dep)}setDepModal({visible:false,plugin:null,deps:[]});if(depModal.plugin)setConsent({visible:true,plugin:depModal.plugin})};
 
   const updatePlugin=async(p:PluginInfo)=>{const lv=getUpdateInfo(p);if(!lv)return;try{await doInstall({...p,version:lv});setPlugins(prev=>prev.map(x=>x.id===p.id?{...x,version:lv}:x));Message.success("Updated to v"+lv)}catch(e){console.error("Update failed:",e)}};
-  const toggleEnable=(p:PluginInfo)=>{setPlugins(prev=>prev.map(x=>x.id===p.id?{...x,enabled:!x.enabled}:x));Message.success(p.enabled?zh("Disabled"):zh("Enable"))};
-  const uninstallPlugin=(p:PluginInfo)=>{setPlugins(prev=>prev.filter(x=>x.id!==p.id));Message.success(zh("Plugin uninstalled"))};
+  const toggleEnable=async(p:PluginInfo)=>{const api=(window as any).electronAPI;if(!api||!api.enablePlugin){Message.error("API not available");return;}try{const result=p.enabled?await api.disablePlugin(p.id):await api.enablePlugin(p.id);if(result&&result.success){await refreshInstalled();Message.success(p.enabled?zh("Disabled"):zh("Enabled"))}else{Message.error("Failed: "+(result?.error||"unknown"))}}catch(e){Message.error(String(e))}};
+  const uninstallPlugin=async(p:PluginInfo)=>{const api=(window as any).electronAPI;if(!api||!api.uninstallPlugin){Message.error("API not available");return;}try{const result=await api.uninstallPlugin(p.id,false);if(result&&result.success){await refreshInstalled();Message.success(zh("Plugin uninstalled"))}else{Message.error("Failed: "+(result?.error||"unknown"))}}catch(e){Message.error(String(e))}};
 
   const renderCard=(p:PluginInfo,installed:boolean)=>{const lv=getUpdateInfo(p);const mkt=market.find(m=>m.id===p.id);const dr=mkt?.rating||p.rating;const dd=mkt?.downloads||p.downloads;const dv=mkt?.verified||p.verified;return(
     <div key={p.id} className="bg-fill-1 rd-12px p-14px flex gap-14px cursor-pointer hover:shadow-md transition-shadow border-1 border-solid border-fill-2" onClick={()=>setDetail(mkt||p)}>
