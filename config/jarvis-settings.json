@@ -1,0 +1,50 @@
+{
+  "version": 1,
+  "modes": {
+    "default": {
+      "activePlugins": [
+        "com.jarvis.memory",
+        "com.jarvis.scheduler",
+        "com.jarvis.clipboard"
+      ]
+    },
+    "work": {
+      "activePlugins": [
+        "com.jarvis.browser",
+        "com.jarvis.memory",
+        "com.jarvis.scheduler",
+        "com.jarvis.overlay",
+        "com.jarvis.voice",
+        "com.jarvis.clipboard"
+      ]
+    },
+    "game": {
+      "activePlugins": [
+        "com.jarvis.overlay",
+        "com.jarvis.voice",
+        "com.jarvis.computer-use",
+        "com.jarvis.memory",
+        "com.jarvis.vision"
+      ]
+    }
+  },
+  "activeModeId": "default",
+  "updatedAt": 1781221661331,
+  "activeProviderId": "lmstudio",
+  "activeModel": null,
+  "providers": [
+    {
+      "id": "lmstudio",
+      "type": "lmstudio",
+      "name": "LM Studio (Local)",
+      "endpoint": "http://127.0.0.1:1234",
+      "apiKey": "",
+      "enabled": true,
+      "autoDiscover": true,
+      "lastChecked": 1781221661331,
+      "createdAt": 1781213143407
+    }
+  ],
+  "defaultProviderId": "lmstudio",
+  "defaultModelId": null
+}

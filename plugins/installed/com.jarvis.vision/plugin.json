@@ -1,0 +1,25 @@
+{
+  "id": "com.jarvis.vision",
+  "name": "视觉分析",
+  "version": "1.0.0",
+  "author": "Jarvis Team",
+  "description": "AI驱动的屏幕分析和UI理解，支持截图分析、元素检测、文字提取。",
+  "entry": "index.js",
+  "permissions": [
+    "screen:capture",
+    "network:outbound",
+    "filesystem:write"
+  ],
+  "capabilities": [
+    "vision",
+    "screen",
+    "ocr"
+  ],
+  "dependencies": [],
+  "minimumJarvisVersion": "2.0.0",
+  "compatibleModes": [
+    "work",
+    "game"
+  ],
+  "enabledByDefault": false
+}
