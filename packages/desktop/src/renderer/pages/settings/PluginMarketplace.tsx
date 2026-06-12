@@ -75,7 +75,7 @@ const PluginMarketplace=()=>{
 
   useEffect(()=>{
     setMktLoading(true);
-    fetch("https://y1518008066-a11y.github.io/AionUi/marketplace/index.json")
+    fetch("https://y1518008066-a11y.github.io/marketplace/index.json")
       .then(r=>r.ok?r.json():Promise.reject(r.status))
       .then(d=>{setMarket(Array.isArray(d)?d:(d.entries||d.plugins||[]));setMktLoading(false)})
       .catch(()=>{fetch("/marketplace/index.json").then(r=>r.json()).then(d=>{setMarket(Array.isArray(d)?d:(d.entries||d.plugins||[]));setMktLoading(false);setMktErr(null)}).catch(()=>{setMktErr("离线");setMktLoading(false)})});
