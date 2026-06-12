@@ -136,7 +136,7 @@ class PluginInstaller {
    * Install from a local directory.
    */
   private installFromPath(sourcePath: string, warnings: string[]): InstallResult {
-    let absSource = resolve(sourcePath);
+    let absSource = resolve(sourcePath); console.log('[Installer] installFromPath sourcePath:', sourcePath, 'absSource:', absSource, '__dirname:', __dirname, 'PLUGINS_ROOT:', PLUGINS_ROOT);
 
     // If source doesn't exist, try to resolve pluginId -> directory name
     if (!existsSync(absSource)) {

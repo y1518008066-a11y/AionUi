@@ -74,7 +74,7 @@ export function initPluginBridge(): void {
   ipcMain.handle('plugin:install', async (_event, params: { pluginId: string; sourcePath?: string }) => {
     try {
       const installer = getInstaller();
-      const sourcePath = params.sourcePath || resolvePluginDir(params.pluginId);
+      const sourcePath = params.sourcePath || resolvePluginDir(params.pluginId); console.log('[PluginBridge] install sourcePath:', sourcePath, 'appRoot:', getAppRoot(), 'cwd:', process.cwd());
       
       const result = await installer.install({
         type: 'local-path',
