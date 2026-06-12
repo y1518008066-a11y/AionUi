@@ -51,13 +51,7 @@ function StarRating({ rating, reviews }: { rating?: number; reviews?: number }) 
 
 interface PluginInfo { id:string;name:string;version:string;author:string;description:string;longDescription?:string;enabled:boolean;installed:boolean;capabilities:string[];permissions:string[];dependencies:string[];downloads?:number;rating?:number;reviews?:number;verified?:string;changelog?:{v:string;date:string;notes:string[]}[];homepage?:string;repository?:string;license?:string }
 
-const BUILTIN:PluginInfo[]=[
-  {id:"com.jarvis.browser",name:"浏览器插件",version:"1.0.0",author:"Jarvis Team",description:"基于 Playwright 的真实浏览器执行层。",enabled:false,installed:true,capabilities:["browser","screen","network"],permissions:["screen:capture","network:outbound","filesystem:read","filesystem:write","process:spawn"],dependencies:[]},
-  {id:"com.jarvis.computer-use",name:"桌面操控插件",version:"1.1.0",author:"Jarvis Team",description:"桌面状态感知、截图采集、窗口枚举。",enabled:false,installed:true,capabilities:["computer-use","screen"],permissions:["screen:capture","filesystem:write","network:outbound"],dependencies:[]},
-  {id:"com.jarvis.memory",name:"记忆存储",version:"1.0.0",author:"Jarvis",description:"持久化键值对记忆存储。",enabled:true,installed:true,capabilities:["memory"],permissions:["filesystem:read","filesystem:write"],dependencies:[]},
-  {id:"com.jarvis.scheduler",name:"任务调度器",version:"1.0.0",author:"Jarvis",description:"定时任务调度管理。",enabled:true,installed:true,capabilities:["scheduler"],permissions:["filesystem:read","filesystem:write","ui:notification"],dependencies:[]},
-  {id:"com.jarvis.clipboard",name:"剪贴板",version:"1.0.0",author:"Jarvis",description:"剪贴板读写工具。",enabled:true,installed:true,capabilities:["clipboard"],permissions:["clipboard:read","clipboard:write"],dependencies:[]}
-];
+const BUILTIN:PluginInfo[]=[]
 
 const CAPS=["browser","computer-use","clipboard","memory","voice","ocr","scheduler","overlay","screen","vision","desktop","network","notification","audio","ui"];
 
@@ -73,24 +67,7 @@ const PluginMarketplace=()=>{
   const [detail,setDetail]=useState<PluginInfo|null>(null);
   const [depModal,setDepModal]=useState<{visible:boolean;plugin:PluginInfo|null;deps:PluginInfo[]}>({visible:false,plugin:null,deps:[]});
 
-  useEffect(()=>{
-    setMktLoading(true);
-    fetch("https://raw.githubusercontent.com/y1518008066-a11y/AionUi/main/marketplace/index.json")
-      .then(r=>r.ok?r.json():Promise.reject(r.status))
-      .then(d=>{setMarket(Array.isArray(d)?d:(d.entries||d.plugins||[]));setMktLoading(false)})
-      .catch(()=>{fetch("/marketplace/index.json").then(r=>r.json()).then(d=>{setMarket(Array.isArray(d)?d:(d.entries||d.plugins||[]));setMktLoading(false);setMktErr(null)}).catch(()=>{setMktErr("离线");setMktLoading(false)})
-      .finally(() => {
-        const api = (window as any).electronAPI;
-        if (api && api.getInstalledPlugins) {
-          api.getInstalledPlugins().then((res: any) => { refreshInstalled(); // also refresh via helper
-            if (res && res.success && Array.isArray(res.plugins)) {
-              const installedIds = new Set(typeof res.plugins[0] === "string" ? res.plugins : res.plugins.map((p: any) => p.id || p));
-              setPlugins(prev => prev.map(p => installedIds.has(p.id) ? {...p, installed: true, enabled: true} : p));
-            }
-          }).catch(() => {});
-        }
-      })});
-  },[]);
+  useEffect(()=>{ refreshInstalled(); },[]);
 
   const getUpdateInfo=useCallback((p:PluginInfo)=>{const mp=market.find(m=>m.id===p.id);if(!mp||!mp.version)return null;return mp.version!==p.version?mp.version:null},[market]);
 
