@@ -102,7 +102,7 @@ const PluginMarketplace=()=>{
 
   const updatePlugin=async(p:PluginInfo)=>{const latestVersion=getUpdateInfo(p);if(!latestVersion)return;try{await doInstall({...p,version:latestVersion});setPlugins(prev=>prev.map(x=>x.id===p.id?{...x,version:latestVersion}:x));Message.success("Updated to v"+latestVersion)}catch(e){console.error("Update failed:",e)}};
   const toggleEnable=(p:PluginInfo)=>{setPlugins(prev=>prev.map(x=>x.id===p.id?{...x,enabled:!x.enabled}:x));Message.success(p.enabled?zh("Disabled"):zh("Enable"))};
-  const uninstall=(p:PluginInfo)=>{setPlugins(prev=>prev.filter(x=>x.id!==p.id));Message.success(zh("Plugin uninstalled"))};
+  const uninstallPlugin=(p:PluginInfo)=>{setPlugins(prev=>prev.filter(x=>x.id!==p.id));Message.success(zh("Plugin uninstalled"))};
 
   const renderCard=(p:PluginInfo,installed:boolean)=>{const latestVersion=getUpdateInfo(p);const mktInfo=market.find(m=>m.id===p.id);const displayRating=mktInfo?.rating||p.rating;const displayDownloads=mktInfo?.downloads||p.downloads;const displayVerified=mktInfo?.verified||p.verified;return(
     <div key={p.id} className="bg-fill-1 rd-12px p-14px flex gap-14px cursor-pointer hover:shadow-md transition-shadow border-1 border-solid border-fill-2" onClick={()=>setDetail(mktInfo||p)}>
