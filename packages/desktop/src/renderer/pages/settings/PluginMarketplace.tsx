@@ -82,7 +82,7 @@ const PluginMarketplace=()=>{
       .finally(() => {
         const api = (window as any).electronAPI;
         if (api && api.getInstalledPlugins) {
-          api.getInstalledPlugins().then((res: any) => {
+          api.getInstalledPlugins().then((res: any) => { refreshInstalled(); // also refresh via helper
             if (res && res.success && Array.isArray(res.plugins)) {
               const installedIds = new Set(typeof res.plugins[0] === "string" ? res.plugins : res.plugins.map((p: any) => p.id || p));
               setPlugins(prev => prev.map(p => installedIds.has(p.id) ? {...p, installed: true, enabled: true} : p));
