@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+﻿import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Button, Input, Message, Modal, Tag, Tooltip, Drawer, Spin } from "@arco-design/web-react";
 import { Puzzle, Search, Refresh, Plus, Play, Pause, FolderOpen, Delete, Star, Download, People, Check, Shield, User, ArrowLeft } from "@icon-park/react";
 import SettingsPageWrapper from "./components/SettingsPageWrapper";
@@ -84,7 +84,7 @@ const PluginMarketplace=()=>{
         if (api && api.getInstalledPlugins) {
           api.getInstalledPlugins().then((res: any) => {
             if (res && res.success && Array.isArray(res.plugins)) {
-              const installedIds = new Set(res.plugins.map((p: any) => p.id));
+              const installedIds = new Set(typeof res.plugins[0] === "string" ? res.plugins : res.plugins.map((p: any) => p.id || p));
               setPlugins(prev => prev.map(p => installedIds.has(p.id) ? {...p, installed: true, enabled: true} : p));
             }
           }).catch(() => {});
