@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @license
  * Copyright 2025 AionUi (aionui.com)
  * SPDX-License-Identifier: Apache-2.0
@@ -20,38 +20,81 @@ import { resolve } from 'path';
 
 /** All known plugin capabilities. */
 type PluginCapability =
-  | 'browser'
-  | 'computer-use'
-  | 'clipboard'
-  | 'memory'
-  | 'voice'
-  | 'ocr'
-  | 'scheduler'
-  | 'overlay'
-  | 'screen'
-  | 'notification'
-  | 'filesystem'
-  | 'network'
-  | 'subprocess'
-  | 'ui';
+    | 'browser'
+    | 'computer-use'
+    | 'clipboard'
+    | 'memory'
+    | 'voice'
+    | 'ocr'
+    | 'scheduler'
+    | 'overlay'
+    | 'screen'
+    | 'notification'
+    | 'filesystem'
+    | 'network'
+    | 'subprocess'
+    | 'ui'
+    | 'vision'
+    | 'assistant'
+    | 'agent'
+    | 'proactive'
+    | 'observer'
+    | 'decision'
+    | 'work'
+    | 'planning'
+    | 'game'
+    | 'strategy'
+    | 'learning'
+    | 'search'
+    | 'context'
+    | 'desktop'
+    | 'cursor'
+    | 'window'
+    | 'display'
+    | 'automation'
+    | 'research'
+    | 'document'
+    | 'excel'
+    | 'meeting'
+    | 'github'
+    | 'mcp'
+    | 'terminal'
+    | 'editor'
+    | 'notion';
 
 /** All known permission types. */
 type PluginPermission =
-  | 'filesystem:read'
-  | 'filesystem:write'
-  | 'network:outbound'
-  | 'network:inbound'
-  | 'clipboard:read'
-  | 'clipboard:write'
-  | 'process:spawn'
-  | 'ui:overlay'
-  | 'ui:notification'
-  | 'audio:input'
-  | 'audio:output'
-  | 'screen:capture'
-  | 'memory'
-  | 'scheduler'
-  | 'clipboard';
+    | 'filesystem:read'
+    | 'filesystem:write'
+    | 'network:outbound'
+    | 'network:inbound'
+    | 'clipboard:read'
+    | 'clipboard:write'
+    | 'process:spawn'
+    | 'ui:overlay'
+    | 'ui:notification'
+    | 'audio:input'
+    | 'audio:output'
+    | 'screen:capture'
+    | 'memory'
+    | 'scheduler'
+    | 'clipboard'
+    | 'assistant'
+    | 'proactive'
+    | 'browser'
+    | 'computer-use'
+    | 'vision'
+    | 'game'
+    | 'work'
+    | 'desktop'
+    | 'screen'
+    | 'notification'
+    | 'overlay'
+    | 'voice'
+    | 'camera'
+    | 'microphone'
+    | 'browser:script'
+    | 'browser:cookies';
 
 /** The plugin.json manifest structure. */
 type PluginManifest = {
@@ -118,6 +161,33 @@ const KNOWN_CAPABILITIES: PluginCapability[] = [
   'network',
   'subprocess',
   'ui',
+  'vision',
+  'assistant',
+  'agent',
+  'proactive',
+  'observer',
+  'decision',
+  'work',
+  'planning',
+  'game',
+  'strategy',
+  'learning',
+  'search',
+  'context',
+  'desktop',
+  'cursor',
+  'window',
+  'display',
+  'automation',
+  'research',
+  'document',
+  'excel',
+  'meeting',
+  'github',
+  'mcp',
+  'terminal',
+  'editor',
+  'notion',
 ];
 
 // eslint-disable-next-line unicorn/prefer-set-has
@@ -137,6 +207,22 @@ const KNOWN_PERMISSIONS: PluginPermission[] = [
   'memory',
   'scheduler',
   'clipboard',
+  'assistant',
+  'proactive',
+  'browser',
+  'computer-use',
+  'vision',
+  'game',
+  'work',
+  'desktop',
+  'screen',
+  'notification',
+  'overlay',
+  'voice',
+  'camera',
+  'microphone',
+  'browser:script',
+  'browser:cookies',
 ];
 
 const SEMVER_REGEX = /^\d+\.\d+\.\d+(-[a-zA-Z0-9.]+)?(\+[a-zA-Z0-9.]+)?$/;
