@@ -1,0 +1,436 @@
+[
+  {
+    "id": "com.jarvis.browser",
+    "name": "Browser",
+    "version": "1.2.0",
+    "author": "Jarvis Team",
+    "description": "Real browser automation via Playwright. Navigate, click, type, screenshot, and more.",
+    "homepage": "https://github.com/jarvis-plugins/browser",
+    "repository": "https://github.com/jarvis-plugins/browser",
+    "license": "MIT",
+    "icon": "browser",
+    "capabilities": [
+      "browser",
+      "screen",
+      "network"
+    ],
+    "permissions": [
+      "network:outbound",
+      "screen:capture",
+      "filesystem:read",
+      "filesystem:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "default"
+    ],
+    "downloadUrl": "https://y1518008066-a11y.github.io/AionUi/plugins/browser/",
+    "checksum": "0fb73f07fba4541acb21a69cf3796937773835309c56b207d90ace2cb4aac7a6",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 132555,
+    "rating": 4.5,
+    "tags": [
+      "browser",
+      "automation",
+      "web"
+    ],
+    "category": "automation",
+    "reviews": 8421,
+    "verified": "official",
+    "changelog": [
+      {
+        "v": "1.2.0",
+        "date": "2026-06-10",
+        "notes": [
+          "Improved Playwright startup performance",
+          "Added cookie management",
+          "Fixed tab switching on Windows"
+        ]
+      },
+      {
+        "v": "1.1.0",
+        "date": "2026-05-20",
+        "notes": [
+          "Added screenshot capture",
+          "Improved error handling",
+          "New find action"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-05-01",
+        "notes": [
+          "Initial release"
+        ]
+      }
+    ],
+    "longDescription": "Real browser automation via Playwright. Navigate, click, type, screenshot, and more. Improved Playwright startup performance. Added cookie management. Fixed tab switching on Windows"
+  },
+  {
+    "id": "com.jarvis.memory",
+    "name": "Memory",
+    "version": "1.0.0",
+    "author": "Jarvis",
+    "description": "Persistent key-value memory store for AI agents. Store and retrieve context across conversations.",
+    "homepage": "https://github.com/jarvis-plugins/memory",
+    "repository": "https://github.com/jarvis-plugins/memory",
+    "license": "MIT",
+    "icon": "memory",
+    "capabilities": [
+      "memory"
+    ],
+    "permissions": [
+      "filesystem:read",
+      "filesystem:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "default"
+    ],
+    "downloadUrl": "https://y1518008066-a11y.github.io/AionUi/plugins/memory/",
+    "checksum": "1b57474d414831c0ddd2a7fddcd0384367ee2a20b392b9d4fad0f8a152ef1257",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-01T00:00:00Z",
+    "downloads": 45678,
+    "rating": 4.2,
+    "tags": [
+      "memory",
+      "storage"
+    ],
+    "category": "core",
+    "reviews": 3210,
+    "verified": "official",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-01",
+        "notes": [
+          "Key-value memory store",
+          "Persistent storage",
+          "Auto-save"
+        ]
+      }
+    ],
+    "longDescription": "Persistent key-value memory store for AI agents. Store and retrieve context across conversations. Key-value memory store. Persistent storage. Auto-save"
+  },
+  {
+    "id": "com.jarvis.scheduler",
+    "name": "Scheduler",
+    "version": "1.0.0",
+    "author": "Jarvis",
+    "description": "Task scheduling and cron job management. Create, cancel, and list scheduled tasks.",
+    "homepage": "https://github.com/jarvis-plugins/scheduler",
+    "repository": "https://github.com/jarvis-plugins/scheduler",
+    "license": "MIT",
+    "icon": "scheduler",
+    "capabilities": [
+      "scheduler"
+    ],
+    "permissions": [
+      "filesystem:read",
+      "filesystem:write",
+      "ui:notification"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.0.0",
+    "compatibleModes": [
+      "work",
+      "default"
+    ],
+    "downloadUrl": "https://y1518008066-a11y.github.io/AionUi/plugins/scheduler/",
+    "checksum": "80b8087f70fecef0293b800c512ea1da0931debb9024b9a238aae4878cdaa4e4",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-01T00:00:00Z",
+    "downloads": 31200,
+    "rating": 4,
+    "tags": [
+      "scheduler",
+      "cron",
+      "automation"
+    ],
+    "category": "core",
+    "reviews": 2105,
+    "verified": "official",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-01",
+        "notes": [
+          "Task scheduling",
+          "Cron-style management",
+          "Notification support"
+        ]
+      }
+    ],
+    "longDescription": "Task scheduling and cron job management. Create, cancel, and list scheduled tasks. Task scheduling. Cron-style management. Notification support"
+  },
+  {
+    "id": "com.jarvis.clipboard",
+    "name": "Clipboard",
+    "version": "1.0.0",
+    "author": "Jarvis",
+    "description": "Read and write system clipboard. Share data between AI agents and your desktop.",
+    "homepage": "https://github.com/jarvis-plugins/clipboard",
+    "repository": "https://github.com/jarvis-plugins/clipboard",
+    "license": "MIT",
+    "icon": "clipboard",
+    "capabilities": [
+      "clipboard"
+    ],
+    "permissions": [
+      "clipboard:read",
+      "clipboard:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "default"
+    ],
+    "downloadUrl": "https://y1518008066-a11y.github.io/AionUi/plugins/clipboard/",
+    "checksum": "ce0fedc8fd6cd2a5d71131cc64715d147339503460e2bb085241d4719ad5a6d6",
+    "sizeBytes": 0,
+    "publishedAt": "2026-05-15T00:00:00Z",
+    "downloads": 78900,
+    "rating": 4.8,
+    "tags": [
+      "clipboard",
+      "utility"
+    ],
+    "category": "utility",
+    "reviews": 6234,
+    "verified": "official",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-05-15",
+        "notes": [
+          "System clipboard read/write",
+          "Multi-format support"
+        ]
+      }
+    ],
+    "longDescription": "Read and write system clipboard. Share data between AI agents and your desktop. System clipboard read/write. Multi-format support"
+  },
+  {
+    "id": "com.jarvis.vision",
+    "name": "Vision",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "AI-powered screen analysis and UI understanding. Analyze screenshots, detect elements, extract text.",
+    "homepage": "https://github.com/jarvis-plugins/vision",
+    "repository": "https://github.com/jarvis-plugins/vision",
+    "license": "MIT",
+    "icon": "vision",
+    "capabilities": [
+      "vision",
+      "screen",
+      "ocr"
+    ],
+    "permissions": [
+      "screen:capture",
+      "network:outbound",
+      "filesystem:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game"
+    ],
+    "downloadUrl": "https://y1518008066-a11y.github.io/AionUi/plugins/vision/",
+    "checksum": "f25fb8627f6873a4ab5ab13e938174bbf29d776bc7a657aef42b152f9c3d5cea",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-10T00:00:00Z",
+    "downloads": 5600,
+    "rating": 3.8,
+    "tags": [
+      "vision",
+      "ai",
+      "screen",
+      "ocr"
+    ],
+    "category": "ai",
+    "reviews": 423,
+    "verified": "community",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-10",
+        "notes": [
+          "AI-powered screen analysis",
+          "Element detection",
+          "Text extraction",
+          "UI understanding"
+        ]
+      }
+    ],
+    "longDescription": "AI-powered screen analysis and UI understanding. Analyze screenshots, detect elements, extract text. AI-powered screen analysis. Element detection. Text extraction. UI understanding"
+  },
+  {
+    "id": "com.jarvis.voice",
+    "name": "Voice",
+    "version": "0.5.0",
+    "author": "Jarvis Team",
+    "description": "Speech-to-text and text-to-speech. Voice input and output for hands-free operation.",
+    "homepage": "https://github.com/jarvis-plugins/voice",
+    "repository": "https://github.com/jarvis-plugins/voice",
+    "license": "MIT",
+    "icon": "voice",
+    "capabilities": [
+      "voice",
+      "audio"
+    ],
+    "permissions": [
+      "audio:input",
+      "audio:output",
+      "filesystem:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game"
+    ],
+    "downloadUrl": "https://y1518008066-a11y.github.io/AionUi/plugins/voice/",
+    "checksum": "846a141c6d34d87c9a20a103eb0b706256fdd4f854283d842dccb0c8b7954c09",
+    "sizeBytes": 0,
+    "publishedAt": "2026-05-20T00:00:00Z",
+    "downloads": 8900,
+    "rating": 3.5,
+    "tags": [
+      "voice",
+      "audio",
+      "speech"
+    ],
+    "category": "ai",
+    "reviews": 678,
+    "verified": "community",
+    "changelog": [
+      {
+        "v": "0.8.0",
+        "date": "2026-05-20",
+        "notes": [
+          "Text-to-speech support",
+          "Speech recognition",
+          "Multi-language"
+        ]
+      }
+    ],
+    "longDescription": "Speech-to-text and text-to-speech. Voice input and output for hands-free operation. Text-to-speech support. Speech recognition. Multi-language"
+  },
+  {
+    "id": "com.jarvis.ocr",
+    "name": "OCR",
+    "version": "0.8.0",
+    "author": "Jarvis Team",
+    "description": "Optical character recognition for screenshots and images. Extract text from any visual content.",
+    "homepage": "https://github.com/jarvis-plugins/ocr",
+    "repository": "https://github.com/jarvis-plugins/ocr",
+    "license": "MIT",
+    "icon": "ocr",
+    "capabilities": [
+      "ocr",
+      "vision",
+      "screen"
+    ],
+    "permissions": [
+      "screen:capture",
+      "filesystem:write",
+      "network:outbound"
+    ],
+    "dependencies": [
+      "com.jarvis.vision"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "https://y1518008066-a11y.github.io/AionUi/plugins/ocr/",
+    "checksum": "8eae29343078e0f53913e3c69667b2a41d7aa8b6a0bde375a8ef8d4f63a0f56d",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-05T00:00:00Z",
+    "downloads": 3400,
+    "rating": 3.2,
+    "tags": [
+      "ocr",
+      "vision",
+      "text"
+    ],
+    "category": "ai",
+    "reviews": 215,
+    "verified": "community",
+    "changelog": [
+      {
+        "v": "0.8.0",
+        "date": "2026-06-05",
+        "notes": [
+          "Optical character recognition",
+          "Language detection",
+          "Image preprocessing"
+        ]
+      }
+    ],
+    "longDescription": "Optical character recognition for screenshots and images. Extract text from any visual content. Optical character recognition. Language detection. Image preprocessing"
+  },
+  {
+    "id": "com.jarvis.overlay",
+    "name": "Overlay",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "On-screen overlay for active assistance. Display information, notifications, and interactive widgets.",
+    "homepage": "https://github.com/jarvis-plugins/overlay",
+    "repository": "https://github.com/jarvis-plugins/overlay",
+    "license": "MIT",
+    "icon": "overlay",
+    "capabilities": [
+      "overlay",
+      "ui",
+      "notification"
+    ],
+    "permissions": [
+      "ui:overlay",
+      "screen:capture",
+      "ui:notification"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game"
+    ],
+    "downloadUrl": "https://y1518008066-a11y.github.io/AionUi/plugins/overlay/",
+    "checksum": "fcc1bf3ce4e8c397dc60510f0e80cbe73ccbd6f6fdb6473774f10a54ed993af5",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-08T00:00:00Z",
+    "downloads": 6700,
+    "rating": 4.1,
+    "tags": [
+      "overlay",
+      "ui",
+      "display"
+    ],
+    "category": "ui",
+    "reviews": 512,
+    "verified": "community",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-08",
+        "notes": [
+          "On-screen overlay widgets",
+          "Notification display",
+          "Interactive components"
+        ]
+      }
+    ],
+    "longDescription": "On-screen overlay for active assistance. Display information, notifications, and interactive widgets. On-screen overlay widgets. Notification display. Interactive components"
+  }
+]
