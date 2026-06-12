@@ -146,5 +146,19 @@ export function initPluginBridge(): void {
       return { success: false, error: String(err) };
     }
   });
+  
+  // debug: return app root and resolved paths
+  ipcMain.handle('plugin:debug-paths', async () => {
+    return {
+      __dirname,
+      appRoot: getAppRoot(),
+      cwd: process.cwd(),
+      installedDir: resolve(getAppRoot(), 'plugins', 'installed'),
+      installedExists: existsSync(resolve(getAppRoot(), 'plugins', 'installed')),
+      installedContents: existsSync(resolve(getAppRoot(), 'plugins', 'installed')) 
+        ? require('fs').readdirSync(resolve(getAppRoot(), 'plugins', 'installed')) 
+        : null,
+    };
+  });
   console.log('[PluginBridge] IPC handlers registered');
 }
