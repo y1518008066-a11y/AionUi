@@ -6,6 +6,7 @@
 
 import { ipcMain } from 'electron';
 import { PluginInstaller } from '../plugin-marketplace/installer';
+import { PluginLoader } from '../plugin-runtime/loader';
 import { resolve, join } from 'path';
 
 /** Get the project root, accounting for Electron packaging. */
@@ -52,6 +53,16 @@ function resolvePluginDir(pluginId: string): string {
 }
 
 let installerInstance: any = null;
+let pluginLoader: PluginLoader | null = null;
+
+function getLoader(): PluginLoader {
+  if (!pluginLoader) {
+    pluginLoader = new PluginLoader(resolve(getAppRoot(), 'plugins', 'installed'));
+    pluginLoader.discover();
+    console.log('[PluginBridge] PluginLoader initialized:', pluginLoader.count, 'plugins discovered');
+  }
+  return pluginLoader;
+}
 
 function getInstaller() {
   if (!installerInstance) {
@@ -75,7 +86,7 @@ export function initPluginBridge(): void {
       });
 
       if (result.ok) {
-        console.log('[PluginBridge] Installed:', params.pluginId, '→', result.installPath);
+        console.log('[PluginBridge] Installed:', params.pluginId, '→', result.installPath); getLoader().discover();
       } else {
         console.error('[PluginBridge] Install failed:', params.pluginId, result.error);
       }
@@ -104,7 +115,7 @@ export function initPluginBridge(): void {
   ipcMain.handle('plugin:list-installed', async () => {
     try {
       const installer = getInstaller();
-      return { success: true, plugins: installer.listInstalled() };
+      const loader = getLoader(); const diag = loader.getDiagnostics(); return { success: true, plugins: installer.listInstalled(), diagnostics: diag };
     } catch (err) {
       return { success: false, error: String(err), plugins: [] };
     }
@@ -125,14 +136,14 @@ export function initPluginBridge(): void {
   ipcMain.handle('plugin:enable', async (_event, pluginId: string) => {
     try {
       console.log('[PluginBridge] Enabling:', pluginId);
-      // Currently enable just validates that the plugin exists in installed/
-      const { existsSync } = require('fs');
-      const installedPath = resolve(getAppRoot(), 'plugins', 'installed', pluginId);
-      if (!existsSync(installedPath)) {
-        return { success: false, error: 'Plugin not installed: ' + pluginId };
-      }
+      const loader = getLoader();
+      loader.discover(); // refresh in case new plugins were installed
+      const ok = await loader.enable(pluginId);
+      if (!ok) return { success: false, error: 'Failed to enable: ' + pluginId };
+      console.log('[PluginBridge] Enabled:', pluginId);
       return { success: true };
     } catch (err) {
+      console.error('[PluginBridge] Enable error:', err);
       return { success: false, error: String(err) };
     }
   });
@@ -141,8 +152,13 @@ export function initPluginBridge(): void {
   ipcMain.handle('plugin:disable', async (_event, pluginId: string) => {
     try {
       console.log('[PluginBridge] Disabling:', pluginId);
+      const loader = getLoader();
+      const ok = await loader.disable(pluginId);
+      if (!ok) return { success: false, error: 'Plugin not enabled: ' + pluginId };
+      console.log('[PluginBridge] Disabled:', pluginId);
       return { success: true };
     } catch (err) {
+      console.error('[PluginBridge] Disable error:', err);
       return { success: false, error: String(err) };
     }
   });
