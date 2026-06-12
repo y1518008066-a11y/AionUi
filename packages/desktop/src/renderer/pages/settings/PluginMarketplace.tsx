@@ -78,7 +78,18 @@ const PluginMarketplace=()=>{
     fetch("https://raw.githubusercontent.com/y1518008066-a11y/AionUi/main/marketplace/index.json")
       .then(r=>r.ok?r.json():Promise.reject(r.status))
       .then(d=>{setMarket(Array.isArray(d)?d:(d.entries||d.plugins||[]));setMktLoading(false)})
-      .catch(()=>{fetch("/marketplace/index.json").then(r=>r.json()).then(d=>{setMarket(Array.isArray(d)?d:(d.entries||d.plugins||[]));setMktLoading(false);setMktErr(null)}).catch(()=>{setMktErr("离线");setMktLoading(false)})});
+      .catch(()=>{fetch("/marketplace/index.json").then(r=>r.json()).then(d=>{setMarket(Array.isArray(d)?d:(d.entries||d.plugins||[]));setMktLoading(false);setMktErr(null)}).catch(()=>{setMktErr("离线");setMktLoading(false)})
+      .finally(() => {
+        const api = (window as any).electronAPI;
+        if (api && api.getInstalledPlugins) {
+          api.getInstalledPlugins().then((res: any) => {
+            if (res && res.success && Array.isArray(res.plugins)) {
+              const installedIds = new Set(res.plugins.map((p: any) => p.id));
+              setPlugins(prev => prev.map(p => installedIds.has(p.id) ? {...p, installed: true, enabled: true} : p));
+            }
+          }).catch(() => {});
+        }
+      })});
   },[]);
 
   const getUpdateInfo=useCallback((p:PluginInfo)=>{const mp=market.find(m=>m.id===p.id);if(!mp||!mp.version)return null;return mp.version!==p.version?mp.version:null},[market]);
