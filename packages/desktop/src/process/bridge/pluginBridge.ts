@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Plugin Bridge — IPC handlers for plugin marketplace operations.
  * Wires the PluginInstaller into the Electron main process so the
  * renderer can install/uninstall plugins via IPC.
@@ -7,14 +7,12 @@
 import { ipcMain } from 'electron';
 import { resolve } from 'path';
 
-let PluginInstallerClass: typeof import('../../../plugin-marketplace/installer').PluginInstaller | null = null;
-let installerInstance: InstanceType<typeof PluginInstallerClass> | null = null;
+let installerInstance: any = null;
 
 function getInstaller() {
   if (!installerInstance) {
-    // Dynamic require to avoid bundling plugin-marketplace into renderer
-    const { PluginInstaller } = require(resolve(process.cwd(), 'plugin-marketplace/installer'));
-    PluginInstallerClass = PluginInstaller;
+    // Static import — electron-vite bundles plugin-marketplace via alias
+    const { PluginInstaller } = require('@plugin-marketplace/installer');
     installerInstance = new PluginInstaller();
     console.log('[PluginBridge] PluginInstaller initialized');
   }
