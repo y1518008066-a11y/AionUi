@@ -432,5 +432,1307 @@
       }
     ],
     "longDescription": "On-screen overlay for active assistance. Display information, notifications, and interactive widgets. On-screen overlay widgets. Notification display. Interactive components"
+  },
+  {
+    "id": "com.jarvis.github",
+    "name": "GitHub",
+    "version": "2.1.0",
+    "author": "Jarvis Team",
+    "description": "Full GitHub integration: repos, PRs, issues, CI checks, releases, and code search.",
+    "homepage": "https://github.com/jarvis-plugins/github",
+    "repository": "https://github.com/jarvis-plugins/github",
+    "license": "MIT",
+    "icon": "github",
+    "capabilities": [
+      "github",
+      "network",
+      "notification"
+    ],
+    "permissions": [
+      "network:outbound",
+      "ui:notification"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "default"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-08T00:00:00Z",
+    "downloads": 182500,
+    "rating": 4.9,
+    "reviews": 12400,
+    "verified": "official",
+    "tags": [
+      "github",
+      "git",
+      "pr",
+      "issues",
+      "code"
+    ],
+    "category": "integration",
+    "changelog": [
+      {
+        "v": "2.1.0",
+        "date": "2026-06-08",
+        "notes": [
+          "PR review automation",
+          "CI failure analysis",
+          "Code search"
+        ]
+      },
+      {
+        "v": "2.0.0",
+        "date": "2026-05-15",
+        "notes": [
+          "Repository management",
+          "Issue tracking",
+          "Webhook support"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.codex",
+    "name": "Codex CLI",
+    "version": "1.5.0",
+    "author": "Jarvis Team",
+    "description": "Native Codex CLI integration for advanced coding, debugging, and agent orchestration.",
+    "homepage": "https://github.com/jarvis-plugins/codex",
+    "repository": "https://github.com/jarvis-plugins/codex",
+    "license": "MIT",
+    "icon": "code",
+    "capabilities": [
+      "codex",
+      "agent",
+      "coding",
+      "terminal"
+    ],
+    "permissions": [
+      "process:spawn",
+      "filesystem:read",
+      "filesystem:write",
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-10T00:00:00Z",
+    "downloads": 95200,
+    "rating": 4.7,
+    "reviews": 6800,
+    "verified": "official",
+    "tags": [
+      "codex",
+      "coding",
+      "agent",
+      "terminal"
+    ],
+    "category": "ai",
+    "changelog": [
+      {
+        "v": "1.5.0",
+        "date": "2026-06-10",
+        "notes": [
+          "Multi-agent orchestration",
+          "Improved tool calling",
+          "Streaming support"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-05-01",
+        "notes": [
+          "Initial Codex integration"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.lmstudio",
+    "name": "LM Studio",
+    "version": "1.3.0",
+    "author": "Jarvis Team",
+    "description": "Local LLM provider integration. Auto-discover, health check, model listing, and chat via LM Studio.",
+    "homepage": "https://github.com/jarvis-plugins/lmstudio",
+    "repository": "https://github.com/jarvis-plugins/lmstudio",
+    "license": "MIT",
+    "icon": "cpu",
+    "capabilities": [
+      "llm",
+      "local",
+      "provider",
+      "discovery"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.5.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "default"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 67000,
+    "rating": 4.6,
+    "reviews": 4200,
+    "verified": "official",
+    "tags": [
+      "lmstudio",
+      "local",
+      "llm",
+      "provider"
+    ],
+    "category": "ai",
+    "changelog": [
+      {
+        "v": "1.3.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Auto-discovery of LM Studio endpoints",
+          "Model health monitoring",
+          "Streaming chat support"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-05-20",
+        "notes": [
+          "Basic LM Studio integration"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.openai",
+    "name": "OpenAI",
+    "version": "2.0.0",
+    "author": "Jarvis Team",
+    "description": "OpenAI API integration: GPT-4o, o4-mini, DALL-E, Whisper. Full provider with tool calling.",
+    "homepage": "https://github.com/jarvis-plugins/openai",
+    "repository": "https://github.com/jarvis-plugins/openai",
+    "license": "MIT",
+    "icon": "openai",
+    "capabilities": [
+      "llm",
+      "cloud",
+      "provider",
+      "vision",
+      "voice"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-01T00:00:00Z",
+    "downloads": 245000,
+    "rating": 4.8,
+    "reviews": 18500,
+    "verified": "official",
+    "tags": [
+      "openai",
+      "gpt",
+      "cloud",
+      "provider"
+    ],
+    "category": "ai",
+    "changelog": [
+      {
+        "v": "2.0.0",
+        "date": "2026-06-01",
+        "notes": [
+          "GPT-4o support",
+          "Tool calling",
+          "Vision API",
+          "Streaming"
+        ]
+      },
+      {
+        "v": "1.5.0",
+        "date": "2026-05-10",
+        "notes": [
+          "DALL-E integration",
+          "Whisper STT"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.anthropic",
+    "name": "Anthropic Claude",
+    "version": "1.8.0",
+    "author": "Jarvis Team",
+    "description": "Anthropic Claude API: Opus, Sonnet, Haiku. Advanced reasoning and tool use.",
+    "homepage": "https://github.com/jarvis-plugins/anthropic",
+    "repository": "https://github.com/jarvis-plugins/anthropic",
+    "license": "MIT",
+    "icon": "anthropic",
+    "capabilities": [
+      "llm",
+      "cloud",
+      "provider",
+      "vision"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-05T00:00:00Z",
+    "downloads": 198000,
+    "rating": 4.7,
+    "reviews": 14200,
+    "verified": "official",
+    "tags": [
+      "anthropic",
+      "claude",
+      "cloud",
+      "provider"
+    ],
+    "category": "ai",
+    "changelog": [
+      {
+        "v": "1.8.0",
+        "date": "2026-06-05",
+        "notes": [
+          "Claude Opus support",
+          "Tool use enhancement",
+          "Vision analysis"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-04-20",
+        "notes": [
+          "Initial Claude integration"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.gemini",
+    "name": "Google Gemini",
+    "version": "1.6.0",
+    "author": "Jarvis Team",
+    "description": "Google Gemini API: Flash, Pro, Ultra. Multimodal AI with long context.",
+    "homepage": "https://github.com/jarvis-plugins/gemini",
+    "repository": "https://github.com/jarvis-plugins/gemini",
+    "license": "MIT",
+    "icon": "gemini",
+    "capabilities": [
+      "llm",
+      "cloud",
+      "provider",
+      "vision"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-03T00:00:00Z",
+    "downloads": 156000,
+    "rating": 4.5,
+    "reviews": 9800,
+    "verified": "official",
+    "tags": [
+      "gemini",
+      "google",
+      "cloud",
+      "provider"
+    ],
+    "category": "ai",
+    "changelog": [
+      {
+        "v": "1.6.0",
+        "date": "2026-06-03",
+        "notes": [
+          "Gemini Flash 2.5 support",
+          "Long context 1M tokens",
+          "Multimodal input"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-05-01",
+        "notes": [
+          "Initial Gemini integration"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.openrouter",
+    "name": "OpenRouter",
+    "version": "1.4.0",
+    "author": "Jarvis Team",
+    "description": "OpenRouter gateway: 200+ models, unified API, automatic fallback, rate limiting.",
+    "homepage": "https://github.com/jarvis-plugins/openrouter",
+    "repository": "https://github.com/jarvis-plugins/openrouter",
+    "license": "MIT",
+    "icon": "router",
+    "capabilities": [
+      "llm",
+      "cloud",
+      "provider",
+      "routing"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "default"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-07T00:00:00Z",
+    "downloads": 89000,
+    "rating": 4.4,
+    "reviews": 5200,
+    "verified": "official",
+    "tags": [
+      "openrouter",
+      "routing",
+      "provider",
+      "multi-model"
+    ],
+    "category": "ai",
+    "changelog": [
+      {
+        "v": "1.4.0",
+        "date": "2026-06-07",
+        "notes": [
+          "200+ model support",
+          "Automatic failover",
+          "Cost optimization"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-05-10",
+        "notes": [
+          "Initial OpenRouter integration"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.mcp",
+    "name": "MCP Ecosystem",
+    "version": "1.2.0",
+    "author": "Jarvis Team",
+    "description": "Model Context Protocol server/client. Connect to MCP tools, resources, and prompts.",
+    "homepage": "https://github.com/jarvis-plugins/mcp",
+    "repository": "https://github.com/jarvis-plugins/mcp",
+    "license": "MIT",
+    "icon": "mcp",
+    "capabilities": [
+      "mcp",
+      "tools",
+      "protocol",
+      "integration"
+    ],
+    "permissions": [
+      "network:outbound",
+      "process:spawn",
+      "filesystem:read"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-09T00:00:00Z",
+    "downloads": 72000,
+    "rating": 4.3,
+    "reviews": 3800,
+    "verified": "verified",
+    "tags": [
+      "mcp",
+      "protocol",
+      "tools",
+      "server"
+    ],
+    "category": "integration",
+    "changelog": [
+      {
+        "v": "1.2.0",
+        "date": "2026-06-09",
+        "notes": [
+          "MCP server management",
+          "Tool discovery",
+          "Resource templates"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-05-25",
+        "notes": [
+          "Initial MCP integration"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.notion",
+    "name": "Notion",
+    "version": "1.1.0",
+    "author": "Community",
+    "description": "Notion workspace integration: pages, databases, blocks, search, and sync.",
+    "homepage": "https://github.com/jarvis-plugins/notion",
+    "repository": "https://github.com/jarvis-plugins/notion",
+    "license": "MIT",
+    "icon": "notion",
+    "capabilities": [
+      "notion",
+      "docs",
+      "database",
+      "sync"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.5.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-05-28T00:00:00Z",
+    "downloads": 34500,
+    "rating": 4.1,
+    "reviews": 2100,
+    "verified": "community",
+    "tags": [
+      "notion",
+      "docs",
+      "productivity"
+    ],
+    "category": "integration",
+    "changelog": [
+      {
+        "v": "1.1.0",
+        "date": "2026-05-28",
+        "notes": [
+          "Database CRUD",
+          "Page search",
+          "Block manipulation"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-04-15",
+        "notes": [
+          "Initial Notion integration"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.vscode",
+    "name": "VS Code",
+    "version": "2.3.0",
+    "author": "Jarvis Team",
+    "description": "VS Code editor integration: open files, run commands, manage extensions, diagnostics.",
+    "homepage": "https://github.com/jarvis-plugins/vscode",
+    "repository": "https://github.com/jarvis-plugins/vscode",
+    "license": "MIT",
+    "icon": "vscode",
+    "capabilities": [
+      "editor",
+      "ide",
+      "coding",
+      "terminal"
+    ],
+    "permissions": [
+      "process:spawn",
+      "filesystem:read",
+      "filesystem:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-11T00:00:00Z",
+    "downloads": 113000,
+    "rating": 4.6,
+    "reviews": 7800,
+    "verified": "official",
+    "tags": [
+      "vscode",
+      "editor",
+      "ide",
+      "coding"
+    ],
+    "category": "tool",
+    "changelog": [
+      {
+        "v": "2.3.0",
+        "date": "2026-06-11",
+        "notes": [
+          "Extension management",
+          "Diagnostics panel",
+          "Terminal integration"
+        ]
+      },
+      {
+        "v": "2.0.0",
+        "date": "2026-05-01",
+        "notes": [
+          "File operations",
+          "Command palette",
+          "Workspace support"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.terminal",
+    "name": "Terminal",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Terminal command execution with output capture, session management, and smart completion.",
+    "homepage": "https://github.com/jarvis-plugins/terminal",
+    "repository": "https://github.com/jarvis-plugins/terminal",
+    "license": "MIT",
+    "icon": "terminal",
+    "capabilities": [
+      "terminal",
+      "shell",
+      "command",
+      "process"
+    ],
+    "permissions": [
+      "process:spawn",
+      "filesystem:read",
+      "filesystem:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.0.0",
+    "compatibleModes": [
+      "work",
+      "game"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-06T00:00:00Z",
+    "downloads": 56000,
+    "rating": 4.3,
+    "reviews": 3400,
+    "verified": "official",
+    "tags": [
+      "terminal",
+      "shell",
+      "command"
+    ],
+    "category": "tool",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-06",
+        "notes": [
+          "Command execution",
+          "Output capture",
+          "Session management",
+          "Smart completion"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.filesystem",
+    "name": "Filesystem",
+    "version": "1.2.0",
+    "author": "Jarvis Team",
+    "description": "Advanced filesystem operations: search, watch, diff, batch rename, archive, sync.",
+    "homepage": "https://github.com/jarvis-plugins/filesystem",
+    "repository": "https://github.com/jarvis-plugins/filesystem",
+    "license": "MIT",
+    "icon": "folder",
+    "capabilities": [
+      "filesystem",
+      "file",
+      "search",
+      "sync"
+    ],
+    "permissions": [
+      "filesystem:read",
+      "filesystem:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "default"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-04T00:00:00Z",
+    "downloads": 78000,
+    "rating": 4.5,
+    "reviews": 5100,
+    "verified": "official",
+    "tags": [
+      "filesystem",
+      "file",
+      "search",
+      "batch"
+    ],
+    "category": "tool",
+    "changelog": [
+      {
+        "v": "1.2.0",
+        "date": "2026-06-04",
+        "notes": [
+          "File watcher",
+          "Batch rename",
+          "Archive support"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-04-01",
+        "notes": [
+          "File operations",
+          "Search",
+          "Diff"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.imagegen",
+    "name": "Image Generator",
+    "version": "1.0.0",
+    "author": "Community",
+    "description": "AI image generation via DALL-E, Stable Diffusion, and Midjourney APIs.",
+    "homepage": "https://github.com/jarvis-plugins/imagegen",
+    "repository": "https://github.com/jarvis-plugins/imagegen",
+    "license": "MIT",
+    "icon": "image",
+    "capabilities": [
+      "image",
+      "generation",
+      "ai",
+      "creative"
+    ],
+    "permissions": [
+      "network:outbound",
+      "filesystem:write"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-02T00:00:00Z",
+    "downloads": 28500,
+    "rating": 4,
+    "reviews": 1800,
+    "verified": "community",
+    "tags": [
+      "image",
+      "generation",
+      "dalle",
+      "stable-diffusion"
+    ],
+    "category": "creative",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-02",
+        "notes": [
+          "DALL-E 3 support",
+          "Stable Diffusion",
+          "Midjourney API"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.translate",
+    "name": "Translator",
+    "version": "1.3.0",
+    "author": "Community",
+    "description": "Multi-language translation with 100+ languages. Real-time, batch, and document translation.",
+    "homepage": "https://github.com/jarvis-plugins/translate",
+    "repository": "https://github.com/jarvis-plugins/translate",
+    "license": "MIT",
+    "icon": "translate",
+    "capabilities": [
+      "translation",
+      "language",
+      "text"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "default"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-05-25T00:00:00Z",
+    "downloads": 42000,
+    "rating": 4.2,
+    "reviews": 2900,
+    "verified": "community",
+    "tags": [
+      "translation",
+      "language",
+      "i18n"
+    ],
+    "category": "utility",
+    "changelog": [
+      {
+        "v": "1.3.0",
+        "date": "2026-05-25",
+        "notes": [
+          "100+ languages",
+          "Document translation",
+          "Batch mode"
+        ]
+      },
+      {
+        "v": "1.0.0",
+        "date": "2026-03-10",
+        "notes": [
+          "Basic translation",
+          "Language detection"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.weather",
+    "name": "Weather",
+    "version": "1.0.0",
+    "author": "Community",
+    "description": "Real-time weather, forecasts, alerts. Location-based with multiple providers.",
+    "homepage": "https://github.com/jarvis-plugins/weather",
+    "repository": "https://github.com/jarvis-plugins/weather",
+    "license": "MIT",
+    "icon": "weather",
+    "capabilities": [
+      "weather",
+      "location",
+      "forecast"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.0.0",
+    "compatibleModes": [
+      "default"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-05-30T00:00:00Z",
+    "downloads": 18500,
+    "rating": 3.9,
+    "reviews": 1200,
+    "verified": "community",
+    "tags": [
+      "weather",
+      "forecast",
+      "location"
+    ],
+    "category": "utility",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-05-30",
+        "notes": [
+          "Current conditions",
+          "7-day forecast",
+          "Severe weather alerts",
+          "Multiple providers"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.spotify",
+    "name": "Spotify",
+    "version": "1.0.0",
+    "author": "Community",
+    "description": "Spotify music control: play, pause, search, playlists, recommendations.",
+    "homepage": "https://github.com/jarvis-plugins/spotify",
+    "repository": "https://github.com/jarvis-plugins/spotify",
+    "license": "MIT",
+    "icon": "spotify",
+    "capabilities": [
+      "music",
+      "audio",
+      "media"
+    ],
+    "permissions": [
+      "network:outbound"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "1.0.0",
+    "compatibleModes": [
+      "game",
+      "default"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-05-22T00:00:00Z",
+    "downloads": 22500,
+    "rating": 4.1,
+    "reviews": 1500,
+    "verified": "community",
+    "tags": [
+      "spotify",
+      "music",
+      "media"
+    ],
+    "category": "entertainment",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-05-22",
+        "notes": [
+          "Playback control",
+          "Search",
+          "Playlists",
+          "Recommendations"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.active-assistant",
+    "name": "Active Assistant",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Background observer with proactive suggestions. Monitors screen, analyzes context, and offers help before you ask.",
+    "homepage": "https://github.com/jarvis-plugins/active-assistant",
+    "repository": "https://github.com/jarvis-plugins/active-assistant",
+    "license": "MIT",
+    "icon": "assistant",
+    "capabilities": [
+      "assistant",
+      "agent",
+      "proactive",
+      "observer",
+      "decision"
+    ],
+    "permissions": [
+      "screen:capture",
+      "ui:overlay",
+      "memory",
+      "scheduler",
+      "network:outbound"
+    ],
+    "dependencies": [
+      "com.jarvis.computer-use",
+      "com.jarvis.vision",
+      "com.jarvis.overlay",
+      "com.jarvis.memory"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "developer"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 1200,
+    "rating": 4.5,
+    "reviews": 85,
+    "verified": "official",
+    "tags": [
+      "assistant",
+      "proactive",
+      "agent",
+      "observer"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Background screen observation",
+          "Context analysis",
+          "Proactive suggestions",
+          "User confirmation required"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.learning",
+    "name": "Learning",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Automatic learning from your workflow. Builds knowledge base, records patterns, and improves over time.",
+    "homepage": "https://github.com/jarvis-plugins/learning",
+    "repository": "https://github.com/jarvis-plugins/learning",
+    "license": "MIT",
+    "icon": "learning",
+    "capabilities": [
+      "learning",
+      "knowledge",
+      "memory",
+      "patterns",
+      "preferences"
+    ],
+    "permissions": [
+      "memory",
+      "filesystem:read",
+      "filesystem:write",
+      "screen:capture"
+    ],
+    "dependencies": [
+      "com.jarvis.memory"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "developer"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 800,
+    "rating": 4.3,
+    "reviews": 52,
+    "verified": "official",
+    "tags": [
+      "learning",
+      "knowledge",
+      "memory",
+      "patterns"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Workflow recording",
+          "Knowledge base building",
+          "Preference learning",
+          "Pattern recognition"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.work-assistant",
+    "name": "Work Assistant",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Proactive work helper: Excel analysis, web research, document generation, form filling, batch processing.",
+    "homepage": "https://github.com/jarvis-plugins/work-assistant",
+    "repository": "https://github.com/jarvis-plugins/work-assistant",
+    "license": "MIT",
+    "icon": "work",
+    "capabilities": [
+      "work",
+      "excel",
+      "research",
+      "document",
+      "automation"
+    ],
+    "permissions": [
+      "screen:capture",
+      "network:outbound",
+      "filesystem:read",
+      "filesystem:write",
+      "clipboard:read",
+      "clipboard:write",
+      "ui:overlay"
+    ],
+    "dependencies": [
+      "com.jarvis.browser",
+      "com.jarvis.vision",
+      "com.jarvis.overlay",
+      "com.jarvis.clipboard"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 600,
+    "rating": 4.6,
+    "reviews": 38,
+    "verified": "official",
+    "tags": [
+      "work",
+      "excel",
+      "research",
+      "document",
+      "automation"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Auto screen analysis",
+          "Excel/table analysis",
+          "Web research",
+          "Document generation",
+          "User confirmation required for all actions"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.game-assistant",
+    "name": "Game Assistant",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "In-game overlay assistant: boss alerts, strategy tips, build suggestions, wiki search, auto-screenshot analysis.",
+    "homepage": "https://github.com/jarvis-plugins/game-assistant",
+    "repository": "https://github.com/jarvis-plugins/game-assistant",
+    "license": "MIT",
+    "icon": "game",
+    "capabilities": [
+      "game",
+      "overlay",
+      "ocr",
+      "strategy",
+      "automation"
+    ],
+    "permissions": [
+      "screen:capture",
+      "ui:overlay",
+      "network:outbound",
+      "memory"
+    ],
+    "dependencies": [
+      "com.jarvis.computer-use",
+      "com.jarvis.vision",
+      "com.jarvis.overlay",
+      "com.jarvis.ocr"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "game"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 950,
+    "rating": 4.4,
+    "reviews": 62,
+    "verified": "official",
+    "tags": [
+      "game",
+      "overlay",
+      "strategy",
+      "ocr"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "HUD overlay",
+          "Boss alerts",
+          "Strategy tips",
+          "Wiki search",
+          "Build recommendations",
+          "User confirmation for automation"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.knowledge-search",
+    "name": "Knowledge Search",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Background knowledge search with credibility scoring. Searches GitHub, docs, StackOverflow, wikis automatically.",
+    "homepage": "https://github.com/jarvis-plugins/knowledge-search",
+    "repository": "https://github.com/jarvis-plugins/knowledge-search",
+    "license": "MIT",
+    "icon": "knowledge",
+    "capabilities": [
+      "search",
+      "knowledge",
+      "research",
+      "credibility"
+    ],
+    "permissions": [
+      "network:outbound",
+      "memory",
+      "ui:overlay"
+    ],
+    "dependencies": [
+      "com.jarvis.overlay",
+      "com.jarvis.memory"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "developer"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 450,
+    "rating": 4.2,
+    "reviews": 28,
+    "verified": "official",
+    "tags": [
+      "search",
+      "knowledge",
+      "research",
+      "credibility"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Multi-source search",
+          "Credibility scoring (★1-5)",
+          "GitHub/Official/Wiki/Docs/StackOverflow/Reddit",
+          "Results pushed to Overlay"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.overlay-assistant",
+    "name": "Overlay Assistant",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "On-screen overlay hub: reminders, suggestions, one-click actions, agent status, mode indicator.",
+    "homepage": "https://github.com/jarvis-plugins/overlay-assistant",
+    "repository": "https://github.com/jarvis-plugins/overlay-assistant",
+    "license": "MIT",
+    "icon": "overlay",
+    "capabilities": [
+      "overlay",
+      "ui",
+      "notification",
+      "status"
+    ],
+    "permissions": [
+      "ui:overlay",
+      "ui:notification",
+      "screen:capture"
+    ],
+    "dependencies": [
+      "com.jarvis.overlay"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "developer"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 300,
+    "rating": 4,
+    "reviews": 18,
+    "verified": "official",
+    "tags": [
+      "overlay",
+      "ui",
+      "notification",
+      "status"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Reminder display",
+          "Suggestion cards",
+          "One-click execution",
+          "Agent status",
+          "Provider status",
+          "Mode indicator",
+          "No background execution"
+        ]
+      }
+    ]
   }
 ]

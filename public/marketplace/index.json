@@ -1361,5 +1361,378 @@
         ]
       }
     ]
+  },
+  {
+    "id": "com.jarvis.active-assistant",
+    "name": "Active Assistant",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Background observer with proactive suggestions. Monitors screen, analyzes context, and offers help before you ask.",
+    "homepage": "https://github.com/jarvis-plugins/active-assistant",
+    "repository": "https://github.com/jarvis-plugins/active-assistant",
+    "license": "MIT",
+    "icon": "assistant",
+    "capabilities": [
+      "assistant",
+      "agent",
+      "proactive",
+      "observer",
+      "decision"
+    ],
+    "permissions": [
+      "screen:capture",
+      "ui:overlay",
+      "memory",
+      "scheduler",
+      "network:outbound"
+    ],
+    "dependencies": [
+      "com.jarvis.computer-use",
+      "com.jarvis.vision",
+      "com.jarvis.overlay",
+      "com.jarvis.memory"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "developer"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 1200,
+    "rating": 4.5,
+    "reviews": 85,
+    "verified": "official",
+    "tags": [
+      "assistant",
+      "proactive",
+      "agent",
+      "observer"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Background screen observation",
+          "Context analysis",
+          "Proactive suggestions",
+          "User confirmation required"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.learning",
+    "name": "Learning",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Automatic learning from your workflow. Builds knowledge base, records patterns, and improves over time.",
+    "homepage": "https://github.com/jarvis-plugins/learning",
+    "repository": "https://github.com/jarvis-plugins/learning",
+    "license": "MIT",
+    "icon": "learning",
+    "capabilities": [
+      "learning",
+      "knowledge",
+      "memory",
+      "patterns",
+      "preferences"
+    ],
+    "permissions": [
+      "memory",
+      "filesystem:read",
+      "filesystem:write",
+      "screen:capture"
+    ],
+    "dependencies": [
+      "com.jarvis.memory"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "developer"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 800,
+    "rating": 4.3,
+    "reviews": 52,
+    "verified": "official",
+    "tags": [
+      "learning",
+      "knowledge",
+      "memory",
+      "patterns"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Workflow recording",
+          "Knowledge base building",
+          "Preference learning",
+          "Pattern recognition"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.work-assistant",
+    "name": "Work Assistant",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Proactive work helper: Excel analysis, web research, document generation, form filling, batch processing.",
+    "homepage": "https://github.com/jarvis-plugins/work-assistant",
+    "repository": "https://github.com/jarvis-plugins/work-assistant",
+    "license": "MIT",
+    "icon": "work",
+    "capabilities": [
+      "work",
+      "excel",
+      "research",
+      "document",
+      "automation"
+    ],
+    "permissions": [
+      "screen:capture",
+      "network:outbound",
+      "filesystem:read",
+      "filesystem:write",
+      "clipboard:read",
+      "clipboard:write",
+      "ui:overlay"
+    ],
+    "dependencies": [
+      "com.jarvis.browser",
+      "com.jarvis.vision",
+      "com.jarvis.overlay",
+      "com.jarvis.clipboard"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 600,
+    "rating": 4.6,
+    "reviews": 38,
+    "verified": "official",
+    "tags": [
+      "work",
+      "excel",
+      "research",
+      "document",
+      "automation"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Auto screen analysis",
+          "Excel/table analysis",
+          "Web research",
+          "Document generation",
+          "User confirmation required for all actions"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.game-assistant",
+    "name": "Game Assistant",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "In-game overlay assistant: boss alerts, strategy tips, build suggestions, wiki search, auto-screenshot analysis.",
+    "homepage": "https://github.com/jarvis-plugins/game-assistant",
+    "repository": "https://github.com/jarvis-plugins/game-assistant",
+    "license": "MIT",
+    "icon": "game",
+    "capabilities": [
+      "game",
+      "overlay",
+      "ocr",
+      "strategy",
+      "automation"
+    ],
+    "permissions": [
+      "screen:capture",
+      "ui:overlay",
+      "network:outbound",
+      "memory"
+    ],
+    "dependencies": [
+      "com.jarvis.computer-use",
+      "com.jarvis.vision",
+      "com.jarvis.overlay",
+      "com.jarvis.ocr"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "game"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 950,
+    "rating": 4.4,
+    "reviews": 62,
+    "verified": "official",
+    "tags": [
+      "game",
+      "overlay",
+      "strategy",
+      "ocr"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "HUD overlay",
+          "Boss alerts",
+          "Strategy tips",
+          "Wiki search",
+          "Build recommendations",
+          "User confirmation for automation"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.knowledge-search",
+    "name": "Knowledge Search",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "Background knowledge search with credibility scoring. Searches GitHub, docs, StackOverflow, wikis automatically.",
+    "homepage": "https://github.com/jarvis-plugins/knowledge-search",
+    "repository": "https://github.com/jarvis-plugins/knowledge-search",
+    "license": "MIT",
+    "icon": "knowledge",
+    "capabilities": [
+      "search",
+      "knowledge",
+      "research",
+      "credibility"
+    ],
+    "permissions": [
+      "network:outbound",
+      "memory",
+      "ui:overlay"
+    ],
+    "dependencies": [
+      "com.jarvis.overlay",
+      "com.jarvis.memory"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "developer"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 450,
+    "rating": 4.2,
+    "reviews": 28,
+    "verified": "official",
+    "tags": [
+      "search",
+      "knowledge",
+      "research",
+      "credibility"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Multi-source search",
+          "Credibility scoring (★1-5)",
+          "GitHub/Official/Wiki/Docs/StackOverflow/Reddit",
+          "Results pushed to Overlay"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "com.jarvis.overlay-assistant",
+    "name": "Overlay Assistant",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "On-screen overlay hub: reminders, suggestions, one-click actions, agent status, mode indicator.",
+    "homepage": "https://github.com/jarvis-plugins/overlay-assistant",
+    "repository": "https://github.com/jarvis-plugins/overlay-assistant",
+    "license": "MIT",
+    "icon": "overlay",
+    "capabilities": [
+      "overlay",
+      "ui",
+      "notification",
+      "status"
+    ],
+    "permissions": [
+      "ui:overlay",
+      "ui:notification",
+      "screen:capture"
+    ],
+    "dependencies": [
+      "com.jarvis.overlay"
+    ],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+      "work",
+      "game",
+      "developer"
+    ],
+    "downloadUrl": "",
+    "checksum": "",
+    "sizeBytes": 0,
+    "publishedAt": "2026-06-12T00:00:00Z",
+    "downloads": 300,
+    "rating": 4,
+    "reviews": 18,
+    "verified": "official",
+    "tags": [
+      "overlay",
+      "ui",
+      "notification",
+      "status"
+    ],
+    "category": "assistant",
+    "changelog": [
+      {
+        "v": "1.0.0",
+        "date": "2026-06-12",
+        "notes": [
+          "Reminder display",
+          "Suggestion cards",
+          "One-click execution",
+          "Agent status",
+          "Provider status",
+          "Mode indicator",
+          "No background execution"
+        ]
+      }
+    ]
   }
 ]
