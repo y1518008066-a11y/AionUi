@@ -1,0 +1,31 @@
+{
+  "id": "com.jarvis.game-assistant",
+  "name": "游戏助手",
+  "version": "1.0.0",
+  "author": "Jarvis Team",
+  "description": "游戏中悬浮助手：BOSS提醒、攻略提示、Build建议、装备建议、截图分析、OCR识别。",
+  "entry": "index.js",
+  "permissions": [
+    "screen:capture",
+    "ui:overlay",
+    "memory",
+    "computer-use",
+    "network:outbound"
+  ],
+  "capabilities": [
+    "game",
+    "overlay",
+    "vision",
+    "computer-use"
+  ],
+  "dependencies": [
+    "com.jarvis.memory",
+    "com.jarvis.vision",
+    "com.jarvis.active-assistant"
+  ],
+  "minimumJarvisVersion": "2.0.0",
+  "compatibleModes": [
+    "game"
+  ],
+  "enabledByDefault": false
+}

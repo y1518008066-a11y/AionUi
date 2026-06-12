@@ -1,0 +1,30 @@
+{
+  "id": "com.jarvis.work-assistant",
+  "name": "工作助手",
+  "version": "1.0.0",
+  "author": "Jarvis Team",
+  "description": "主动工作助手：文档理解、编码辅助、浏览器辅助、项目感知、生产力优化。",
+  "entry": "index.js",
+  "permissions": [
+    "screen:capture",
+    "network:outbound",
+    "memory",
+    "ui:overlay",
+    "browser"
+  ],
+  "capabilities": [
+    "work",
+    "planning",
+    "browser",
+    "memory"
+  ],
+  "dependencies": [
+    "com.jarvis.memory",
+    "com.jarvis.active-assistant"
+  ],
+  "minimumJarvisVersion": "2.0.0",
+  "compatibleModes": [
+    "work"
+  ],
+  "enabledByDefault": false
+}

@@ -1,0 +1,32 @@
+{
+  "id": "com.jarvis.active-assistant",
+  "name": "主动协助",
+  "version": "1.0.0",
+  "author": "Jarvis Team",
+  "description": "后台观察 + 主动建议。监控屏幕、分析上下文、提前给出帮助。",
+  "entry": "index.js",
+  "permissions": [
+    "screen:capture",
+    "ui:overlay",
+    "memory",
+    "scheduler",
+    "network:outbound"
+  ],
+  "capabilities": [
+    "assistant",
+    "agent",
+    "proactive",
+    "observer",
+    "decision"
+  ],
+  "dependencies": [
+    "com.jarvis.memory"
+  ],
+  "minimumJarvisVersion": "2.0.0",
+  "compatibleModes": [
+    "work",
+    "game",
+    "developer"
+  ],
+  "enabledByDefault": false
+}
