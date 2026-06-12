@@ -258,7 +258,8 @@
   "capabilities": "能力扩展",
   "capabilitiesTab": {
     "skills": "技能",
-    "tools": "工具"
+    "tools": "工具",
+    "plugins": "插件市场"
   },
   "webui": "远程连接",
   "installed": "已安装",
@@ -996,5 +997,28 @@
     "conversation": "对话",
     "mcp": "MCP",
     "customAgent": "自定义 Agent"
+  },
+  "pluginMarketplace": {
+    "title": "插件市场",
+    "description": "安装、管理和更新 Jarvis 插件。",
+    "refreshed": "已刷新",
+    "enabled": "已启用",
+    "disabled": "已禁用",
+    "install": "安装",
+    "uninstall": "卸载",
+    "update": "更新",
+    "enable": "启用",
+    "disable": "禁用",
+    "installed": "已安装",
+    "available": "可安装",
+    "searchPlaceholder": "搜索插件...",
+    "author": "作者",
+    "version": "版本",
+    "noInstalled": "暂无已安装插件。",
+    "noAvailable": "市场暂无可用插件。",
+    "permissionConsent": "权限确认",
+    "consentDescription": "此插件需要以下权限：",
+    "installed_success": "插件已安装",
+    "uninstalled_success": "插件已卸载"
   }
 }

@@ -4,9 +4,10 @@ import { Delete, FolderOpen, Info, Lightning, Puzzle, Search, Refresh } from '@i
 import React, { useCallback, useEffect, useRef, useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSearchParams } from 'react-router-dom';
+import { getSkillDisplayName } from './skillNameZh';
 import SettingsPageWrapper from './components/SettingsPageWrapper';
 
-// Skill ä¿¡æ¯ç±»åž‹ / Skill info type
+// Skill ÐÅÏ¢ÀàÐÍ / Skill info type
 interface SkillInfo {
   name: string;
   description: string;
@@ -44,7 +45,7 @@ const getAvatarColorClass = (name: string) => {
 };
 
 interface SkillsHubSettingsProps {
-  /** When false, renders without SettingsPageWrapper â€” useful for embedding in a tab */
+  /** When false, renders without SettingsPageWrapper ¡ª useful for embedding in a tab */
   withWrapper?: boolean;
 }
 
@@ -76,8 +77,8 @@ const SkillsHubSettings: React.FC<SkillsHubSettingsProps> = ({ withWrapper = tru
     setLoading(true);
     try {
       const skills = await ipcBridge.fs.listAvailableSkills.invoke();
-      setAvailableSkills(skills);
-
+            const localizedSkills = skills.map((s: any) => ({ ...s, name: getSkillDisplayName(s.name), description: s.description }));
+      setAvailableSkills(localizedSkills);
       const paths = await ipcBridge.fs.getSkillPaths.invoke();
       setSkillPaths(paths);
 
@@ -166,7 +167,7 @@ const SkillsHubSettings: React.FC<SkillsHubSettingsProps> = ({ withWrapper = tru
   const mainContent = (
     <div className='flex flex-col h-full w-full'>
       <div className='space-y-16px pb-24px'>
-        {/* ======== æˆ‘çš„æŠ€èƒ½ / My Skills ======== */}
+        {/* ======== ÎÒµÄ¼¼ÄÜ / My Skills ======== */}
         <div
           data-testid='my-skills-section'
           className='px-[16px] md:px-[32px] py-32px bg-base rd-16px md:rd-24px shadow-sm border border-b-base relative overflow-hidden transition-all'

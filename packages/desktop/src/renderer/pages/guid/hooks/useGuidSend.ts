@@ -79,6 +79,77 @@ export type GuidSendResult = {
 /**
  * Hook that manages the send logic for ACP and Aion CLI conversations.
  */
+
+/**
+ * Detect if user input is complex enough to warrant cloud model.
+ * Simple: short, single-task, common questions
+ * Complex: multi-step, long, technical, creative, analysis
+ */
+function detectComplexity(input: string): boolean {
+  const trimmed = input.trim();
+  
+  // Count Chinese characters + English words for effective length
+  const chineseChars = (trimmed.match(/[\u4e00-\u9fff]/g) || []).length;
+  const words = trimmed.split(/\s+/).filter(Boolean).length;
+  const effectiveLen = chineseChars + words;
+  
+  // Very short = simple
+  if (effectiveLen < 6) return false;
+  
+  // Long = complex
+  if (effectiveLen > 40) return true;
+  
+  // Complex keyword patterns
+  const complexPatterns = [
+    /explain|·ÖÎö|½âÊÍ|ÎªÊ²Ã´|how does|Ô­Àí|ÊµÏÖ|¼Ü¹¹|Éè¼Æ|ÖØ¹¹|ÓÅ»¯/,
+    /compare|¶Ô±È|Çø±ð|vs\./,
+    /Ð´.*´úÂë|±àÐ´|ÊµÏÖ.*¹¦ÄÜ|¿ª·¢|±à³Ì|Ð´Ò»¸ö|coding/,
+    /debug|µ÷ÊÔ|fix|ÐÞ¸´|bug|±¨´í|´íÎó/,
+    /¶à²½|²½Öè|step.*by.*step|Ò»²½²½/,
+    /review|Éó²é|¼ì²é.*´úÂë|code.*review/,
+    /·­Òë.*³¤|³¤.*·­Òë|translate.*long/,
+    /generate|Éú³É|create.*project|´´½¨.*ÏîÄ¿/,
+    /ÅÀ³æ|scraper|spider|crawl/,
+    /web.*server|·þÎñÆ÷|backend|ºó¶Ë|Ç°¶Ë|frontend/,
+    /database|Êý¾Ý¿â|SQL|sql/,
+    /algorithm|Ëã·¨/,
+    /°²È«|security|Â©¶´|vulnerability/,
+  ];
+  
+  for (const pattern of complexPatterns) {
+    if (pattern.test(trimmed)) return true;
+  }
+  
+  return false;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 export const useGuidSend = (deps: GuidSendDeps): GuidSendResult => {
   const {
     input,
@@ -130,7 +201,7 @@ export const useGuidSend = (deps: GuidSendDeps): GuidSendResult => {
     const { rules: preset_rules } = await resolvePresetRulesAndSkills(agentInfo);
     // Guid page's per-conversation skill overrides take precedence over the
     // assistant's saved defaults. The combined skills menu lets the user pick
-    // any custom skill â€” not just preset-declared ones â€” so for non-preset
+    // any custom skill ?? not just preset-declared ones ?? so for non-preset
     // agents we still forward the user's selection (the backend accepts
     // `preset_enabled_skills` regardless of `is_preset`).
     const presetEnabledSkillsDefault = resolveEnabledSkills(agentInfo);
@@ -160,11 +231,26 @@ export const useGuidSend = (deps: GuidSendDeps): GuidSendResult => {
         Message.warning(t('conversation.noModelConfigured'));
         return;
       }
+        // Dual Route: auto-select local or cloud based on input complexity
+        let routedModel = { ...current_model };
+        if (current_model.dual_route && current_model.platform === 'dual-route') {
+          const isComplex = detectComplexity(input);
+          console.log('[DualRoute] Input length:', input.length, 'isComplex:', isComplex, 'platform:', current_model.platform);
+          if (isComplex) {
+            routedModel.base_url = current_model.dual_route.cloud_url;
+            routedModel.api_key = current_model.dual_route.cloud_api_key;
+          } else {
+            routedModel.base_url = current_model.dual_route.local_url;
+            routedModel.api_key = '';
+            routedModel.use_model = 'qwen3.5-4b';  // use small local model
+          }
+        }
+
       try {
         const conversation = await ipcBridge.conversation.create.invoke({
           type: 'aionrs',
           name: input,
-          model: current_model,
+          model: routedModel,
           extra: {
             default_files: files,
             workspace: finalWorkspace,
@@ -232,7 +318,7 @@ export const useGuidSend = (deps: GuidSendDeps): GuidSendResult => {
         backend: agentBackend,
         name: input,
         // For row-scoped rows (custom ACP / remote) the backend factory
-        // needs the actual catalog id â€” `backend` collapses to the `custom`
+        // needs the actual catalog id ?? `backend` collapses to the `custom`
         // slot so it cannot discriminate between rows on its own.
         agent_id: acpAgentInfo?.id,
         agent_name: acpAgentInfo?.name,

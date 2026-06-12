@@ -258,7 +258,8 @@
   "capabilities": "Capabilities",
   "capabilitiesTab": {
     "skills": "Skills",
-    "tools": "Tools"
+    "tools": "Tools",
+    "plugins": "Plugin Marketplace"
   },
   "webui": "Remote",
   "installed": "Installed",
@@ -995,5 +996,28 @@
     "conversation": "Conversation",
     "mcp": "MCP",
     "customAgent": "Custom Agent"
+  },
+  "pluginMarketplace": {
+    "title": "Plugin Marketplace",
+    "description": "Install, manage and update plugins for Jarvis.",
+    "refreshed": "Refreshed",
+    "enabled": "Enabled",
+    "disabled": "Disabled",
+    "install": "Install",
+    "uninstall": "Uninstall",
+    "update": "Update",
+    "enable": "Enable",
+    "disable": "Disable",
+    "installed": "Installed",
+    "available": "Available",
+    "searchPlaceholder": "Search plugins...",
+    "author": "Author",
+    "version": "Version",
+    "noInstalled": "No plugins installed.",
+    "noAvailable": "No plugins available in marketplace.",
+    "permissionConsent": "Permission Consent",
+    "consentDescription": "This plugin requires the following permissions:",
+    "installed_success": "Plugin installed",
+    "uninstalled_success": "Plugin uninstalled"
   }
 }

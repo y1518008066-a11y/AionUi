@@ -176,7 +176,7 @@ const ProtocolDetectionStatus: React.FC<ProtocolDetectionStatusProps> = ({
 };
 
 /**
- * 供应商 Logo 组件
+ * ????? Logo ???
  * Provider Logo Component
  */
 const ProviderLogo: React.FC<{ logo: string | null; name: string; size?: number }> = ({ logo, name, size = 20 }) => {
@@ -187,14 +187,14 @@ const ProviderLogo: React.FC<{ logo: string | null; name: string; size?: number 
 };
 
 /**
- * 平台下拉选项渲染（第一层）
+ * ???????????????????
  * Platform dropdown option renderer (first level)
  *
- * @param platform - 平台配置 / Platform config
- * @param t - 翻译函数 / Translation function
+ * @param platform - ?????? / Platform config
+ * @param t - ?????? / Translation function
  */
 const renderPlatformOption = (platform: PlatformConfig, t?: (key: string) => string) => {
-  // 如果有 i18nKey 且提供了翻译函数，使用翻译后的名称；否则使用原始名称
+  // ????? i18nKey ????????????????????????????????????????
   // If i18nKey exists and t function is provided, use translated name; otherwise use original name
   const display_name = platform.i18nKey && t ? t(platform.i18nKey) : platform.name;
   return (
@@ -213,7 +213,7 @@ const AddPlatformModal = ModalHOC<{
   const { t } = useTranslation();
   const [form] = Form.useForm();
   const [api_keyEditorVisible, setApiKeyEditorVisible] = useState(false);
-  // 用于追踪上次检测时的输入值，避免重复检测
+  // ?????????????????????????????????
   // Track last detection input to avoid redundant detection
   const [lastDetectionInput, setLastDetectionInput] = useState<{ base_url: string; api_key: string } | null>(null);
 
@@ -224,17 +224,18 @@ const AddPlatformModal = ModalHOC<{
   const bedrockAuthMethod = Form.useWatch('bedrockAuthMethod', form);
   const _bedrockRegion = Form.useWatch('bedrockRegion', form);
 
-  // 获取当前选中的平台配置 / Get current selected platform config
+  // ????????????????? / Get current selected platform config
   const selectedPlatform = useMemo(() => getPlatformByValue(platformValue), [platformValue]);
 
   const platform = selectedPlatform?.platform ?? 'gemini';
-  // 判断是否为"自定义"选项（没有预设 base_url） / Check if "Custom" option (no preset base_url)
+  // ????????"?????"????????? base_url?? / Check if "Custom" option (no preset base_url)
   const isCustom = isCustomOption(platformValue);
   const isBedrock = platform === 'bedrock';
+  const isDualRoute = platform === 'dual-route';
   const isGemini = isGeminiPlatform(platform);
   const isNewApi = isNewApiPlatform(platform);
 
-  // new-api 每模型协议选择状态 / new-api per-model protocol selection state
+  // new-api ????????????? / new-api per-model protocol selection state
   const [modelProtocol, setModelProtocol] = useState<string>('openai');
   const [isFullUrl, setIsFullUrl] = useState(false);
 
@@ -245,7 +246,7 @@ const AddPlatformModal = ModalHOC<{
     }
   }, [modelValue, isNewApi]);
 
-  // 计算实际使用的 base_url（优先使用用户输入，否则使用平台预设）
+  // ??????????? base_url????????????????????????????h
   // Calculate actual base_url (prefer user input, fallback to platform preset)
   const actualBaseUrl = useMemo(() => {
     if (base_url) return base_url;
@@ -256,16 +257,16 @@ const AddPlatformModal = ModalHOC<{
   // We'll build it dynamically in onFocus
   const modelListState = useModeModeList(platform, actualBaseUrl, api_key, true, undefined);
 
-  // 协议检测 Hook / Protocol detection hook
-  // 启用检测的条件：
-  // 1. 自定义平台 或 用户输入了自定义 base URL（非官方地址，如本地代理）
-  // 2. 输入值与上次"采纳建议"时不同（避免切换平台后重复检测）
+  // ?????? Hook / Protocol detection hook
+  // ??????????????
+  // 1. ??????? ?? ?????????????? base URL?????????????u??????
+  // 2. ??????????"???????"????????????????????????
   // Enable detection when:
   // 1. Custom platform OR user entered a custom base URL (non-official, like local proxy)
   // 2. Input values differ from last "accepted suggestion" (avoid redundant detection after platform switch)
   const isNonOfficialBaseUrl = base_url && !isGoogleApisHost(base_url);
   const shouldEnableDetection = isCustom || isNonOfficialBaseUrl;
-  // 只有在用户修改了输入值（相对于上次采纳建议时）才触发检测
+  // ??????????????????????????????????????????????
   // Only trigger detection when input changed since last accepted suggestion
   const inputChangedSinceLastSwitch =
     !lastDetectionInput || lastDetectionInput.base_url !== actualBaseUrl || lastDetectionInput.api_key !== api_key;
@@ -279,11 +280,11 @@ const AddPlatformModal = ModalHOC<{
     }
   );
 
-  // 是否显示检测结果：启用检测 且 (有结果或正在检测) 且 输入值与上次采纳时不同
+  // ???????????????????? ?? (?????????????) ?? ??????????????????
   // Whether to show detection result: enabled AND (has result or detecting) AND input changed since last switch
   const shouldShowDetectionResult = shouldEnableDetection && inputChangedSinceLastSwitch;
 
-  // 处理平台切换建议
+  // ??????????????
   // Handle platform switch suggestion
   const handleSwitchPlatform = (suggestedPlatform: string) => {
     const targetPlatform = MODEL_PLATFORMS.find((p) => p.value === suggestedPlatform || p.name === suggestedPlatform);
@@ -291,22 +292,22 @@ const AddPlatformModal = ModalHOC<{
       form.setFieldValue('platform', targetPlatform.value);
       form.setFieldValue('model', '');
       protocolDetection.reset();
-      // 记录当前输入，防止切换后重复检测
+      // ?????????????????????????
       // Record current input to prevent redundant detection after switch
       setLastDetectionInput({ base_url: actualBaseUrl, api_key });
       message.success(t('settings.platformSwitched', { platform: targetPlatform.name }));
     }
   };
 
-  // 弹窗打开时重置表单 / Reset form when modal opens
+  // ????????????? / Reset form when modal opens
   useEffect(() => {
     if (modalProps.visible) {
       form.resetFields();
       form.setFieldValue('bedrockAuthMethod', 'accessKey');
       form.setFieldValue('bedrockRegion', 'us-east-1');
       protocolDetection.reset();
-      setLastDetectionInput(null); // 重置检测记录 / Reset detection record
-      setModelProtocol('openai'); // 重置协议选择 / Reset protocol selection
+      setLastDetectionInput(null); // ????????? / Reset detection record
+      setModelProtocol('openai'); // ??????????? / Reset protocol selection
       setIsFullUrl(false);
 
       // Pre-fill from deep link data (aionui:// protocol)
@@ -327,7 +328,7 @@ const AddPlatformModal = ModalHOC<{
     }
   }, [platform]);
 
-  // 处理自动修复的 base_url / Handle auto-fixed base_url
+  // ???????????? base_url / Handle auto-fixed base_url
   useEffect(() => {
     if (modelListState.data?.fix_base_url) {
       form.setFieldValue('base_url', modelListState.data.fix_base_url);
@@ -339,7 +340,7 @@ const AddPlatformModal = ModalHOC<{
     form
       .validate()
       .then((values) => {
-        // 如果有 i18nKey 使用翻译后的名称，否则使用 platform 的 name
+        // ????? i18nKey ????????????????????? platform ?? name
         // If i18nKey exists use translated name, otherwise use platform name
         const name = selectedPlatform?.i18nKey
           ? t(selectedPlatform.i18nKey)
@@ -348,9 +349,9 @@ const AddPlatformModal = ModalHOC<{
           id: uuid(),
           platform: selectedPlatform?.platform ?? 'custom',
           name,
-          // 优先使用用户输入的 base_url，否则使用平台预设值
+          // ??????????????? base_url???????????????
           // Prefer user input base_url, fallback to platform preset
-          base_url: isBedrock ? '' : values.base_url || selectedPlatform?.base_url || '',
+            base_url: isBedrock ? '' : isDualRoute ? (values.local_api_url || '') : values.base_url || selectedPlatform?.base_url || '',
           api_key: isBedrock ? '' : values.api_key,
           models: [values.model],
           is_full_url: isFullUrl,
@@ -372,7 +373,7 @@ const AddPlatformModal = ModalHOC<{
           };
         }
 
-        // new-api 平台：保存每模型协议配置 / new-api platform: save per-model protocol config
+        // new-api ???????????????????? / new-api platform: save per-model protocol config
         if (isNewApi && values.model) {
           provider.model_protocols = { [values.model]: modelProtocol };
         }
@@ -405,7 +406,7 @@ const AddPlatformModal = ModalHOC<{
       {messageContext}
       <div className='pt-4px pb-12px'>
         <Form form={form} layout='vertical' className='[&_.arco-form-item]:mb-12px [&_.arco-form-item:last-child]:mb-0'>
-          {/* 模型平台选择（第一层）/ Model Platform Selection (first level) */}
+          {/* ?????????????/ Model Platform Selection (first level) */}
           <Form.Item
             initialValue='gemini'
             label={t('settings.modelPlatform')}
@@ -441,10 +442,29 @@ const AddPlatformModal = ModalHOC<{
             </Select>
           </Form.Item>
 
-          {/* Base URL - 自定义选项、标准 Gemini 和 New API 显示 / Base URL - for Custom, standard Gemini and New API */}
+          {/* ?????????? API / Dual Route: Local API */}
+          {isDualRoute && (
+            <Form.Item label={t('settings.dualRoute.localApi', 'Local API')} field={'local_api_url'} required>
+              <Input placeholder={'http://127.0.0.1:1234/v1'} />
+            </Form.Item>
+          )}
+          {/* ????????? API / Dual Route: Cloud API */}
+          {isDualRoute && (
+            <Form.Item label={t('settings.dualRoute.cloudApi', 'Cloud API')} field={'cloud_api_url'} required>
+              <Input placeholder={'https://api.deepseek.com/v1'} />
+            </Form.Item>
+          )}
+          {/* ????????? API Key / Dual Route: Cloud API Key */}
+          {isDualRoute && (
+            <Form.Item label={t('settings.dualRoute.cloudApiKey', 'Cloud API Key')} field={'cloud_api_key'} required>
+              <Input placeholder={'sk-...'} />
+            </Form.Item>
+          )}
+
+                    {/* Base URL - ???????????? Gemini ?? New API ??? / Base URL - for Custom, standard Gemini and New API */}
           <Form.Item
-            hidden={isBedrock || (!isCustom && !isNewApi && platformValue !== 'gemini')}
-            label={t('settings.apiEndpoint', 'API 请求地址')}
+            hidden={isBedrock || isDualRoute || (!isCustom && !isNewApi && platformValue !== 'gemini')}
+            label={t('settings.apiEndpoint', 'API ??????')}
             field={'base_url'}
             required={isCustom || isNewApi}
             rules={[{ required: isCustom || isNewApi }]}
@@ -472,11 +492,11 @@ const AddPlatformModal = ModalHOC<{
           {(isCustom || isNewApi) && !isBedrock && (
             <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginTop: 4, marginBottom: 12 }}>
               <Switch size='small' checked={isFullUrl} onChange={setIsFullUrl} />
-              <span className='text-12px text-t-secondary'>{t('settings.fullUrlMode', '完整 URL')}</span>
+              <span className='text-12px text-t-secondary'>{t('settings.fullUrlMode', '???? URL')}</span>
               <span className='text-11px text-t-tertiary'>
                 {isFullUrl
-                  ? t('settings.fullUrlHint', '直接使用此地址，不拼接路径')
-                  : t('settings.baseUrlHint', '系统会自动拼接请求路径')}
+                  ? t('settings.fullUrlHint', '????????????????????')
+                  : t('settings.baseUrlHint', '??????????????????')}
               </span>
             </div>
           )}
@@ -491,7 +511,7 @@ const AddPlatformModal = ModalHOC<{
             extra={
               <div className='space-y-2px'>
                 <div className='text-11px text-t-secondary mt-2 leading-4'>{t('settings.multiApiKeyTip')}</div>
-                {/* 协议检测状态 / Protocol detection status */}
+                {/* ???????? / Protocol detection status */}
                 {shouldShowDetectionResult && (
                   <ProtocolDetectionStatus
                     isDetecting={protocolDetection.isDetecting}
@@ -589,7 +609,7 @@ const AddPlatformModal = ModalHOC<{
             <Input placeholder='default' />
           </Form.Item>
 
-          {/* 模型选择 / Model Selection */}
+          {/* ?????? / Model Selection */}
           <Form.Item
             label={t('settings.modelName')}
             field={'model'}
@@ -682,11 +702,12 @@ const AddPlatformModal = ModalHOC<{
                   />
                 )
               }
-              options={isFullUrl ? [] : modelListState.data?.models || []}
+              loading={!isDualRoute && !isFullUrl && modelListState.isLoading}
+              options={isFullUrl || isDualRoute ? [] : modelListState.data?.models || []}
             />
           </Form.Item>
 
-          {/* New API 协议选择 / New API Protocol Selection */}
+          {/* New API ??????? / New API Protocol Selection */}
           {isNewApi && (
             <Form.Item
               label={t('settings.modelProtocol')}
@@ -698,7 +719,7 @@ const AddPlatformModal = ModalHOC<{
         </Form>
       </div>
 
-      {/* API Key 编辑器弹窗 / API Key Editor Modal */}
+      {/* API Key ???????? / API Key Editor Modal */}
       <ApiKeyEditorModal
         visible={api_keyEditorVisible}
         api_keys={api_key || ''}

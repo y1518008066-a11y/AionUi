@@ -35,7 +35,7 @@ export interface IConfigStorageRefer {
       preferredMode?: string;
       /** Preferred model ID for new conversations / 新会话的默认模型 */
       preferredModelId?: string;
-      /** LLM prompt timeout in seconds (default: 300) / LLM 请求超时时间（秒，默认 300） */
+      /** LLM prompt timeout in seconds (default: 300) / LLM 请求超时时间（秒，默�?300�?*/
       promptTimeout?: number;
     };
   };
@@ -61,14 +61,14 @@ export interface IConfigStorageRefer {
   'ui.fontSize.code'?: number;
   /** Last-known main window size and position, restored on next launch */
   'window.bounds'?: { x?: number; y?: number; width: number; height: number };
-  /** 桌面模式下是否自动启用 WebUI / Auto-enable WebUI in desktop mode */
+  /** 桌面模式下是否自动启�?WebUI / Auto-enable WebUI in desktop mode */
   'webui.desktop.enabled'?: boolean;
-  /** 桌面模式下是否允许远程访问 / Allow remote access in desktop mode */
+  /** 桌面模式下是否允许远程访�?/ Allow remote access in desktop mode */
   'webui.desktop.allowRemote'?: boolean;
-  /** 桌面模式下 WebUI 端口 / WebUI port in desktop mode */
+  /** 桌面模式�?WebUI 端口 / WebUI port in desktop mode */
   'webui.desktop.port'?: number;
-  customCss: string; // 自定义 CSS 样式 // @deprecated migrated to theme.activeId/theme.userThemes
-  'css.themes': ICssTheme[]; // 自定义 CSS 主题列表 / Custom CSS themes list // @deprecated migrated to theme.activeId/theme.userThemes
+  customCss: string; // 自定�?CSS 样式 // @deprecated migrated to theme.activeId/theme.userThemes
+  'css.themes': ICssTheme[]; // 自定�?CSS 主题列表 / Custom CSS themes list // @deprecated migrated to theme.activeId/theme.userThemes
   'css.activeThemeId': string; // 当前激活的主题 ID / Currently active theme ID // @deprecated migrated to theme.activeId/theme.userThemes
   /** Active unified theme ID */
   'theme.activeId': string;
@@ -84,19 +84,18 @@ export interface IConfigStorageRefer {
     switch?: boolean;
   };
   'tools.speechToText'?: SpeechToTextConfig;
-  // 是否在粘贴文件到工作区时询问确认（true = 不再询问）
-  'workspace.pasteConfirm'?: boolean;
+  // 是否在粘贴文件到工作区时询问确认（true = 不再询问�?  'workspace.pasteConfirm'?: boolean;
   // 上传的文件是否保存到工作区目录（true = 保存到工作区，false = 保存到缓存目录）
   'upload.saveToWorkspace'?: boolean;
-  // guid 页面上次选择的 agent 类型 / Last selected agent type on guid page
+  // guid 页面上次选择�?agent 类型 / Last selected agent type on guid page
   'guid.lastSelectedAgent'?: string;
-  // 关闭窗口时最小化到系统托盘 / Minimize to system tray when closing window
+  // 关闭窗口时最小化到系统托�?/ Minimize to system tray when closing window
   'system.closeToTray'?: boolean;
   // 任务完成时显示系统通知 / Show system notification when task completes
   'system.notificationEnabled'?: boolean;
   // 定时任务完成时显示系统通知 / Show system notification when scheduled task completes
   'system.cronNotificationEnabled'?: boolean;
-  // 阻止系统休眠以保证定时任务执行 / Prevent system sleep to ensure scheduled tasks run
+  // 阻止系统休眠以保证定时任务执�?/ Prevent system sleep to ensure scheduled tasks run
   'system.keepAwake'?: boolean;
   // Automatically preview newly created Office files in the current workspace
   'system.autoPreviewOfficeFiles'?: boolean;
@@ -105,7 +104,7 @@ export interface IConfigStorageRefer {
     id: string;
     use_model: string;
   };
-  // Telegram assistant agent selection / Telegram 助手所使用的 Agent
+  // Telegram assistant agent selection / Telegram 助手所使用�?Agent
   'assistant.telegram.agent'?: {
     backend: string;
     custom_agent_id?: string;
@@ -116,7 +115,7 @@ export interface IConfigStorageRefer {
     id: string;
     use_model: string;
   };
-  // Lark assistant agent selection / Lark 助手所使用的 Agent
+  // Lark assistant agent selection / Lark 助手所使用�?Agent
   'assistant.lark.agent'?: {
     backend: string;
     custom_agent_id?: string;
@@ -127,7 +126,7 @@ export interface IConfigStorageRefer {
     id: string;
     use_model: string;
   };
-  // DingTalk assistant agent selection / DingTalk 助手所使用的 Agent
+  // DingTalk assistant agent selection / DingTalk 助手所使用�?Agent
   'assistant.dingtalk.agent'?: {
     backend: string;
     custom_agent_id?: string;
@@ -138,7 +137,7 @@ export interface IConfigStorageRefer {
     id: string;
     use_model: string;
   };
-  // WeChat assistant agent selection / WeChat 助手所使用的 Agent
+  // WeChat assistant agent selection / WeChat 助手所使用�?Agent
   'assistant.weixin.agent'?: {
     backend: string;
     custom_agent_id?: string;
@@ -149,7 +148,7 @@ export interface IConfigStorageRefer {
     id: string;
     use_model: string;
   };
-  // WeCom assistant agent selection / 企业微信助手所使用的 Agent
+  // WeCom assistant agent selection / 企业微信助手所使用�?Agent
   'assistant.wecom.agent'?: {
     backend: string;
     custom_agent_id?: string;
@@ -158,7 +157,7 @@ export interface IConfigStorageRefer {
   // Skills Market: whether the aionui-skills builtin skill is enabled
   'skillsMarket.enabled'?: boolean;
   /**
-   * One-shot completion flag for the legacy `model.config` → backend providers
+   * One-shot completion flag for the legacy `model.config` �?backend providers
    * migration in {@link migrateProviders}. Once `true`, the migration is
    * short-circuited on subsequent launches so user-deleted providers don't
    * resurface from the still-on-disk legacy `model.config` (ELECTRON-1KT).
@@ -167,9 +166,9 @@ export interface IConfigStorageRefer {
    */
   'migration.providersMigrated_v1'?: boolean;
   /**
-   * One-shot completion flag for the legacy `assistants` → backend assistants
+   * One-shot completion flag for the legacy `assistants` �?backend assistants
    * migration in {@link migrateAssistantsToBackend}. Same rationale as
-   * `migration.providersMigrated_v1` — without it, an assistant the user
+   * `migration.providersMigrated_v1` �?without it, an assistant the user
    * deletes after migration would be re-imported on the next launch from the
    * still-on-disk legacy field.
    */
@@ -195,8 +194,7 @@ export interface IEnvStorageRefer {
 
 /**
  * Conversation source type - identifies where the conversation was created
- * 会话来源类型 - 标识会话创建的来源
- */
+ * 会话来源类型 - 标识会话创建的来�? */
 export type ConversationSource = 'aionui' | 'telegram' | 'lark' | 'dingtalk' | 'weixin' | 'wecom' | (string & {});
 
 export type TChatConversationStatus = 'pending' | 'running' | 'finished';
@@ -245,8 +243,8 @@ export type TChatConversation =
           custom_workspace?: boolean;
           agent_name?: string;
           custom_agent_id?: string; // UUID for identifying specific custom agent
-          preset_context?: string; // 智能助手的预设规则/提示词 / Preset context from smart assistant
-          /** Skills snapshot for this conversation — authoritative list, written
+          preset_context?: string; // 智能助手的预设规�?提示�?/ Preset context from smart assistant
+          /** Skills snapshot for this conversation �?authoritative list, written
            * once at creation. Join with `GET /api/skills` for descriptions. */
           skills?: string[];
           /** MCP server id snapshot chosen when the conversation was created. */
@@ -257,27 +255,27 @@ export type TChatConversation =
           mcp_statuses?: IConversationMcpStatus[];
           /** Session-only MCP server snapshot persisted at creation time. */
           session_mcp_servers?: ISessionMcpServer[];
-          /** 预设助手 ID，用于在会话面板显示助手名称和头像 / Preset assistant ID for displaying name and avatar in conversation panel */
+          /** 预设助手 ID，用于在会话面板显示助手名称和头�?/ Preset assistant ID for displaying name and avatar in conversation panel */
           preset_assistant_id?: string;
           /** 是否置顶会话 / Whether this conversation is pinned */
           pinned?: boolean;
-          /** 置顶时间戳（毫秒）/ Pin timestamp in milliseconds */
+          /** 置顶时间戳（毫秒�? Pin timestamp in milliseconds */
           pinned_at?: number;
-          /** ACP 后端的 session UUID，用于会话恢复 / ACP backend session UUID for session resume */
+          /** ACP 后端�?session UUID，用于会话恢�?/ ACP backend session UUID for session resume */
           acp_session_id?: string;
-          /** Conversation ID that owns the ACP session / 拥有该 ACP session 的会话 ID */
+          /** Conversation ID that owns the ACP session / 拥有�?ACP session 的会�?ID */
           acp_session_conversation_id?: string;
-          /** ACP session 最后更新时间 / Last update time of ACP session */
+          /** ACP session 最后更新时�?/ Last update time of ACP session */
           acp_session_updated_at?: number;
           /** Last context usage from usage_update */
           last_token_usage?: TokenUsageData;
           /** Context window capacity from usage_update */
           last_context_limit?: number;
-          /** Persisted session mode for resume support / 持久化的会话模式，用于恢复 */
+          /** Persisted session mode for resume support / 持久化的会话模式，用于恢�?*/
           session_mode?: string;
-          /** Persisted model ID for resume support / 持久化的模型 ID，用于恢复 */
+          /** Persisted model ID for resume support / 持久化的模型 ID，用于恢�?*/
           current_model_id?: string;
-          /** Cached config options from ACP backend / 缓存的 ACP 配置选项 */
+          /** Cached config options from ACP backend / 缓存�?ACP 配置选项 */
           cached_config_options?: import('@/common/types/platform/acpTypes').AcpSessionConfigOption[];
           /** Pending config option selections from Guid page / Guid 页面待应用的配置选项 */
           pending_config_options?: Record<string, string>;
@@ -297,19 +295,19 @@ export type TChatConversation =
           cli_path?: string;
           custom_workspace?: boolean;
           sandboxMode?: 'read-only' | 'workspace-write' | 'danger-full-access'; // Codex sandbox permission mode
-          preset_context?: string; // 智能助手的预设规则/提示词 / Preset context from smart assistant
-          /** Skills snapshot for this conversation — authoritative list, written
+          preset_context?: string; // 智能助手的预设规�?提示�?/ Preset context from smart assistant
+          /** Skills snapshot for this conversation �?authoritative list, written
            * once at creation. Join with `GET /api/skills` for descriptions. */
           skills?: string[];
-          /** 预设助手 ID，用于在会话面板显示助手名称和头像 / Preset assistant ID for displaying name and avatar in conversation panel */
+          /** 预设助手 ID，用于在会话面板显示助手名称和头�?/ Preset assistant ID for displaying name and avatar in conversation panel */
           preset_assistant_id?: string;
           /** 是否置顶会话 / Whether this conversation is pinned */
           pinned?: boolean;
-          /** 置顶时间戳（毫秒）/ Pin timestamp in milliseconds */
+          /** 置顶时间戳（毫秒�? Pin timestamp in milliseconds */
           pinned_at?: number;
-          /** Persisted session mode for resume support / 持久化的会话模式，用于恢复 */
+          /** Persisted session mode for resume support / 持久化的会话模式，用于恢�?*/
           session_mode?: string;
-          /** User-selected Codex model from Guid page / 用户在引导页选择的 Codex 模型 */
+          /** User-selected Codex model from Guid page / 用户在引导页选择�?Codex 模型 */
           codexModel?: string;
           /** Legacy marker for pre-provider-probe health-check conversations */
           is_health_check?: boolean;
@@ -348,14 +346,14 @@ export type TChatConversation =
             expectedIdentityHash?: string | null;
             switchedAt?: number;
           };
-          /** Skills snapshot for this conversation — authoritative list, written
+          /** Skills snapshot for this conversation �?authoritative list, written
            * once at creation. Join with `GET /api/skills` for descriptions. */
           skills?: string[];
           /** 预设助手 ID / Preset assistant ID */
           preset_assistant_id?: string;
           /** 是否置顶会话 / Whether this conversation is pinned */
           pinned?: boolean;
-          /** 置顶时间戳（毫秒）/ Pin timestamp in milliseconds */
+          /** 置顶时间戳（毫秒�? Pin timestamp in milliseconds */
           pinned_at?: number;
           /** Legacy marker for pre-provider-probe health-check conversations */
           is_health_check?: boolean;
@@ -368,7 +366,7 @@ export type TChatConversation =
   // Legacy Gemini conversations. Kept solely so that the renderer can
   // open historical rows with type='gemini' (message history is served
   // by the shared messages table). The backend factory rejects any
-  // attempt to resume this conversation — see
+  // attempt to resume this conversation �?see
   // AionCore/crates/aionui-common/src/enums.rs and factory.rs.
   // Every field is optional because legacy rows shape-varies across
   // several older Gemini-runtime versions.
@@ -386,7 +384,7 @@ export type TChatConversation =
           is_health_check?: boolean;
           cron_job_id?: string;
           // Other legacy-only keys (session_mode, preset_rules, etc.)
-          // deliberately omitted — they're not read by the renderer.
+          // deliberately omitted �?they're not read by the renderer.
         }
       >,
       'model'
@@ -397,14 +395,14 @@ export type TChatConversation =
         {
           workspace?: string;
           custom_workspace?: boolean;
-          /** Skills snapshot for this conversation — authoritative list, written
+          /** Skills snapshot for this conversation �?authoritative list, written
            * once at creation. Join with `GET /api/skills` for descriptions. */
           skills?: string[];
           /** 预设助手 ID / Preset assistant ID */
           preset_assistant_id?: string;
           /** 是否置顶会话 / Whether this conversation is pinned */
           pinned?: boolean;
-          /** 置顶时间戳（毫秒）/ Pin timestamp in milliseconds */
+          /** 置顶时间戳（毫秒�? Pin timestamp in milliseconds */
           pinned_at?: number;
           /** Legacy marker for pre-provider-probe health-check conversations */
           is_health_check?: boolean;
@@ -424,7 +422,7 @@ export type TChatConversation =
           remoteAgentId: string;
           /** Remote session key for resume */
           sessionKey?: string;
-          /** Skills snapshot for this conversation — authoritative list, written
+          /** Skills snapshot for this conversation �?authoritative list, written
            * once at creation. Join with `GET /api/skills` for descriptions. */
           skills?: string[];
           /** Preset assistant ID */
@@ -449,7 +447,7 @@ export type TChatConversation =
         proxy?: string;
         /** System rules injected at initialization */
         preset_rules?: string;
-        /** Skills snapshot for this conversation — authoritative list, written
+        /** Skills snapshot for this conversation �?authoritative list, written
          * once at creation. Join with `GET /api/skills` for descriptions. */
         skills?: string[];
         /** MCP server id snapshot chosen when the conversation was created. */
@@ -493,14 +491,12 @@ export type ModelType =
   | 'web_search' // 网络搜索
   | 'reasoning' // 推理模型
   | 'embedding' // 嵌入模型
-  | 'rerank' // 重排序模型
-  | 'excludeFromPrimary'; // 排除：不适合作为主力模型
+  | 'rerank' // 重排序模�?  | 'excludeFromPrimary'; // 排除：不适合作为主力模型
 
 export type ModelCapability = {
   type: ModelType;
   /**
-   * 是否为用户手动选择，如果为true，则表示用户手动选择了该类型，否则表示用户手动禁止了该模型；如果为undefined，则表示使用默认值
-   */
+   * 是否为用户手动选择，如果为true，则表示用户手动选择了该类型，否则表示用户手动禁止了该模型；如果为undefined，则表示使用默认�?   */
   isUserSelected?: boolean;
 };
 
@@ -512,17 +508,13 @@ export interface IProvider {
   api_key: string;
   models: string[];
   /**
-   * 模型能力标签列表。打了标签就是支持，没打就是不支持
-   */
+   * 模型能力标签列表。打了标签就是支持，没打就是不支�?   */
   capabilities?: ModelCapability[];
   /**
-   * 上下文token限制，可选字段，只在明确知道时填写
-   */
+   * 上下文token限制，可选字段，只在明确知道时填�?   */
   context_limit?: number;
   /**
-   * 每个模型的协议覆盖配置。映射模型名称到协议字符串。
-   * 仅在 platform 为 'new-api' 时使用。
-   * Per-model protocol overrides. Maps model name to protocol string.
+   * 每个模型的协议覆盖配置。映射模型名称到协议字符串�?   * 仅在 platform �?'new-api' 时使用�?   * Per-model protocol overrides. Maps model name to protocol string.
    * Only used when platform is 'new-api'.
    * e.g. { "gemini-2.5-pro": "gemini", "claude-sonnet-4": "anthropic", "gpt-4o": "openai" }
    */
@@ -541,29 +533,41 @@ export interface IProvider {
     profile?: string;
   };
   /**
-   * 供应商启用状态，默认为 true
+   * 供应商启用状态，默认�?true
    * Provider enabled state, defaults to true
    */
   enabled?: boolean;
   /**
-   * 各个模型的启用状态，默认全部为 true
+   * 各个模型的启用状态，默认全部�?true
    * Individual model enabled states, defaults to all true
    */
   model_enabled?: Record<string, boolean>;
   /**
-   * 各个模型的健康检测结果（仅用于 UI 显示，不影响启用状态）
+   * 各个模型的健康检测结果（仅用�?UI 显示，不影响启用状态）
    * Model health check results (for UI display only, does not affect enabled state)
    */
   model_health?: Record<
     string,
     {
       status: 'unknown' | 'healthy' | 'unhealthy';
-      last_check?: number; // 时间戳 / timestamp
+      last_check?: number; // 时间�?/ timestamp
       latency?: number; // 延迟时间（毫秒）/ latency in milliseconds
       error?: string; // 错误信息 / error message
     }
   >;
   is_full_url?: boolean;
+  /**
+   * ˫·��ģʽ���� / Dual Route mode configuration
+   */
+  dual_route?: {
+    /** ���� API ��ַ / Local API endpoint */
+    local_url: string;
+    /** �ƶ� API ��ַ / Cloud API endpoint */
+    cloud_url: string;
+    /** �ƶ� API Key / Cloud API Key */
+    cloud_api_key: string;
+  };
+
 }
 
 export type TProviderWithModel = Omit<IProvider, 'models'> & {
@@ -611,12 +615,10 @@ export interface IMcpServer {
   enabled: boolean; // 是否默认启用（新会话默认勾选）
   transport: IMcpServerTransport;
   tools?: IMcpTool[];
-  last_test_status?: 'connected' | 'disconnected' | 'error' | 'testing'; // 最近一次检测结果
-  last_connected?: number;
+  last_test_status?: 'connected' | 'disconnected' | 'error' | 'testing'; // 最近一次检测结�?  last_connected?: number;
   created_at: number;
   updated_at: number;
-  original_json: string; // 存储原始JSON配置，用于编辑时的准确显示
-  /** Built-in MCP server managed by AionUi (hide edit/delete in UI) */
+  original_json: string; // 存储原始JSON配置，用于编辑时的准确显�?  /** Built-in MCP server managed by AionUi (hide edit/delete in UI) */
   builtin?: boolean;
 }
 
@@ -650,9 +652,9 @@ export interface IMcpTool {
 export interface ICssTheme {
   id: string; // 唯一标识 / Unique identifier
   name: string; // 主题名称 / Theme name
-  cover?: string; // 封面图片 base64 或 URL / Cover image base64 or URL
+  cover?: string; // 封面图片 base64 �?URL / Cover image base64 or URL
   css: string; // CSS 样式代码 / CSS style code
-  is_preset?: boolean; // 是否为预设主题 / Whether it's a preset theme
+  is_preset?: boolean; // 是否为预设主�?/ Whether it's a preset theme
   created_at: number; // 创建时间 / Creation time
   updated_at: number; // 更新时间 / Update time
 }

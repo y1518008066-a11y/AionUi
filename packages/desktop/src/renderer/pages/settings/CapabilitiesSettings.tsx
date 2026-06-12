@@ -5,7 +5,7 @@
  */
 
 /**
- * CapabilitiesSettings â€” Combined page for Skills Hub and MCP/Tools.
+ * CapabilitiesSettings ¡ª Combined page for Skills Hub and MCP/Tools.
  *
  * This page merges the previously separate "Skills Hub" (skill packs) and
  * "Tools" (MCP servers + speech-to-text) pages into a single "Capabilities"
@@ -21,11 +21,12 @@ import { useSearchParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import SkillsHubSettings from './SkillsHubSettings';
 import ToolsModalContent from '@/renderer/components/settings/SettingsModal/contents/ToolsModalContent';
+import PluginMarketplace from './PluginMarketplace';
 import SettingsPageWrapper from './components/SettingsPageWrapper';
 
-type CapabilitiesTab = 'skills' | 'tools';
+type CapabilitiesTab = 'skills' | 'tools' | 'plugins';
 
-const isCapabilitiesTab = (value: string | null): value is CapabilitiesTab => value === 'skills' || value === 'tools';
+const isCapabilitiesTab = (value: string | null): value is CapabilitiesTab => (value === 'skills' || value === 'tools' || value === 'plugins');
 
 const CapabilitiesSettings: React.FC = () => {
   const { t } = useTranslation();
@@ -67,6 +68,9 @@ const CapabilitiesSettings: React.FC = () => {
         </Tabs.TabPane>
         <Tabs.TabPane key='tools' title={t('settings.capabilitiesTab.tools', { defaultValue: 'MCP & Voice' })}>
           <ToolsModalContent />
+        </Tabs.TabPane>
+        <Tabs.TabPane key='plugins' title={t('settings.capabilitiesTab.plugins', { defaultValue: 'Plugin Marketplace' })}>
+          <PluginMarketplace />
         </Tabs.TabPane>
       </Tabs>
     </SettingsPageWrapper>

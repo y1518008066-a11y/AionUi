@@ -1,17 +1,17 @@
 import { ipcBridge } from '@/common';
 import useSWR from 'swr';
 
-// Gemini æ¨¡å‹æ’åºå‡½æ•°ï¼šPro ä¼˜å…ˆï¼Œç‰ˆæœ¬å·é™åº
+// Gemini Ä£ĞÍÅÅĞòº¯Êı£ºPro ÓÅÏÈ£¬°æ±¾ºÅ½µĞò
 const sortGeminiModels = (models: { label: string; value: string }[]) => {
   return models.toSorted((a, b) => {
     const aPro = a.value.toLowerCase().includes('pro');
     const bPro = b.value.toLowerCase().includes('pro');
 
-    // Pro æ¨¡å‹æ’åœ¨å‰é¢
+    // Pro Ä£ĞÍÅÅÔÚÇ°Ãæ
     if (aPro && !bPro) return -1;
     if (!aPro && bPro) return 1;
 
-    // æå–ç‰ˆæœ¬å·è¿›è¡Œæ¯”è¾ƒ
+    // ÌáÈ¡°æ±¾ºÅ½øĞĞ±È½Ï
     const extractVersion = (name: string) => {
       const match = name.match(/(\d+\.?\d*)/);
       return match ? parseFloat(match[1]) : 0;
@@ -20,12 +20,12 @@ const sortGeminiModels = (models: { label: string; value: string }[]) => {
     const aVersion = extractVersion(a.value);
     const bVersion = extractVersion(b.value);
 
-    // ç‰ˆæœ¬å·å¤§çš„æ’åœ¨å‰é¢
+    // °æ±¾ºÅ´óµÄÅÅÔÚÇ°Ãæ
     if (aVersion !== bVersion) {
       return bVersion - aVersion;
     }
 
-    // ç‰ˆæœ¬å·ç›¸åŒæ—¶æŒ‰å­—æ¯é¡ºåºæ’åº
+    // °æ±¾ºÅÏàÍ¬Ê±°´×ÖÄ¸Ë³ĞòÅÅĞò
     return a.value.localeCompare(b.value);
   });
 };
@@ -52,7 +52,11 @@ const useModeModeList = (
       // Only call the backend when we have credentials it can actually use:
       // - bedrock: bedrock_config carries the credentials (api_key not required)
       // - everything else: api_key is mandatory per backend validator
-      const hasUsableCredentials = platform === 'bedrock' ? !!bedrock_config : !!api_key;
+            // Dual route doesn't fetch models from a single endpoint - skip
+      if (platform === 'dual-route') {
+        return { models: [] };
+      }
+      
       if (hasUsableCredentials) {
         const res = await ipcBridge.mode.fetchModelList.invoke({
           base_url,
@@ -70,12 +74,12 @@ const useModeModeList = (
           }
         });
 
-        // å¦‚æœæ˜¯ Gemini å¹³å°ï¼Œä¼˜åŒ–æ’åº
+        // Èç¹ûÊÇ Gemini Æ½Ì¨£¬ÓÅ»¯ÅÅĞò
         if (platform?.includes('gemini')) {
           modelList = sortGeminiModels(modelList);
         }
 
-        // å¦‚æœè¿”å›äº†ä¿®å¤çš„ base_urlï¼Œå°†å…¶æ·»åŠ åˆ°ç»“æœä¸­
+        // Èç¹û·µ»ØÁËĞŞ¸´µÄ base_url£¬½«ÆäÌí¼Óµ½½á¹ûÖĞ
         if (res.fixed_base_url) {
           return {
             models: modelList,
@@ -86,7 +90,7 @@ const useModeModeList = (
         return { models: modelList };
       }
 
-      // æ—¢æ²¡æœ‰ API key ä¹Ÿæ²¡æœ‰ base_url ä¹Ÿæ²¡æœ‰ bedrock_config æ—¶ï¼Œè¿”å›ç©ºåˆ—è¡¨
+      // ¼ÈÃ»ÓĞ API key Ò²Ã»ÓĞ base_url Ò²Ã»ÓĞ bedrock_config Ê±£¬·µ»Ø¿ÕÁĞ±í
       return { models: [] };
     }
   );

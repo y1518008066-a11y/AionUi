@@ -21,7 +21,7 @@ import { consumePendingDeepLink } from '@/renderer/hooks/system/useDeepLink';
 import '../model-provider.css';
 
 /**
- * è·å–åè®®æ˜¾ç¤ºæ ‡ç­¾é¢œè‰²
+ * »ñÈ¡Ğ­ÒéÏÔÊ¾±êÇ©ÑÕÉ«
  * Get protocol badge color
  */
 const getProtocolColor = (protocol: string): string => {
@@ -37,7 +37,7 @@ const getProtocolColor = (protocol: string): string => {
 };
 
 /**
- * è·å–åè®®æ˜¾ç¤ºåç§°
+ * »ñÈ¡Ğ­ÒéÏÔÊ¾Ãû³Æ
  * Get protocol display name
  */
 const getProtocolLabel = (protocol: string): string => {
@@ -45,7 +45,7 @@ const getProtocolLabel = (protocol: string): string => {
 };
 
 /**
- * è·å–ä¸‹ä¸€ä¸ªåè®®ï¼ˆå¾ªç¯åˆ‡æ¢ï¼‰
+ * »ñÈ¡ÏÂÒ»¸öĞ­Òé£¨Ñ­»·ÇĞ»»£©
  * Get next protocol (cycle through options)
  */
 const getNextProtocol = (current: string): string => {
@@ -61,12 +61,12 @@ const getApiKeyCount = (api_key: string): number => {
 };
 
 /**
- * è·å–ä¾›åº”å•†çš„å¯ç”¨çŠ¶æ€ï¼ˆå…¨é€‰/åŠé€‰/å…¨ä¸é€‰ï¼‰
+ * »ñÈ¡¹©Ó¦ÉÌµÄÆôÓÃ×´Ì¬£¨È«Ñ¡/°ëÑ¡/È«²»Ñ¡£©
  * Get provider enable state (all/partial/none)
  */
 const getProviderState = (platform: IProvider): { checked: boolean; indeterminate: boolean } => {
   if (!platform.model_enabled) {
-    // æ²¡æœ‰ model_enabled è®°å½•ï¼Œé»˜è®¤å…¨éƒ¨å¯ç”¨
+    // Ã»ÓĞ model_enabled ¼ÇÂ¼£¬Ä¬ÈÏÈ«²¿ÆôÓÃ
     return { checked: true, indeterminate: false };
   }
 
@@ -75,20 +75,20 @@ const getProviderState = (platform: IProvider): { checked: boolean; indeterminat
   const totalCount = models.length;
 
   if (enabledCount === 0) {
-    return { checked: false, indeterminate: false }; // å…¨ä¸é€‰
+    return { checked: false, indeterminate: false }; // È«²»Ñ¡
   } else if (enabledCount === totalCount) {
-    return { checked: true, indeterminate: false }; // å…¨é€‰
+    return { checked: true, indeterminate: false }; // È«Ñ¡
   } else {
-    return { checked: true, indeterminate: true }; // åŠé€‰ï¼ˆæœ‰æ¨¡å‹å¼€å¯ï¼Œæ˜¾ç¤ºä¸ºå¼€å¯çŠ¶æ€ï¼‰
+    return { checked: true, indeterminate: true }; // °ëÑ¡£¨ÓĞÄ£ĞÍ¿ªÆô£¬ÏÔÊ¾Îª¿ªÆô×´Ì¬£©
   }
 };
 
 /**
- * æ£€æŸ¥æ¨¡å‹æ˜¯å¦å¯ç”¨
+ * ¼ì²éÄ£ĞÍÊÇ·ñÆôÓÃ
  * Check if model is enabled
  */
 const isModelEnabled = (platform: IProvider, model: string): boolean => {
-  if (!platform.model_enabled) return true; // é»˜è®¤å¯ç”¨
+  if (!platform.model_enabled) return true; // Ä¬ÈÏÆôÓÃ
   return platform.model_enabled[model] !== false;
 };
 
@@ -132,7 +132,10 @@ const ModelModalContent: React.FC = () => {
       .catch((error) => {
         void mutate();
         console.error('Failed to save provider:', error);
-        // 409 Conflict â€” duplicate id (rare pre-launch); different toast
+        // Show actual error detail for debugging
+        const detail = error instanceof Error ? error.message : JSON.stringify(error);
+        message.error(detail);
+        // 409 Conflict ¡ª duplicate id (rare pre-launch); different toast
         const msg = error instanceof Error ? error.message : String(error);
         if (msg.includes('409')) {
           message.error(t('settings.providerIdConflict', { defaultValue: 'Provider id already exists, retry.' }));
@@ -157,12 +160,12 @@ const ModelModalContent: React.FC = () => {
       });
   };
 
-  // åˆ‡æ¢ä¾›åº”å•†å¯ç”¨çŠ¶æ€ï¼ˆå…¨é€‰ â†” å…¨ä¸é€‰ï¼‰
+  // ÇĞ»»¹©Ó¦ÉÌÆôÓÃ×´Ì¬£¨È«Ñ¡ ? È«²»Ñ¡£©
   const toggleProviderEnabled = (platform: IProvider) => {
     const { checked } = getProviderState(platform);
-    const newState = !checked; // åˆ‡æ¢çŠ¶æ€
+    const newState = !checked; // ÇĞ»»×´Ì¬
 
-    // æ‰¹é‡æ›´æ–°æ‰€æœ‰æ¨¡å‹çŠ¶æ€
+    // ÅúÁ¿¸üĞÂËùÓĞÄ£ĞÍ×´Ì¬
     const model_enabled: Record<string, boolean> = {};
     (platform.models ?? []).forEach((model) => {
       model_enabled[model] = newState;
@@ -175,7 +178,7 @@ const ModelModalContent: React.FC = () => {
     updatePlatform(updated, () => {});
   };
 
-  // åˆ‡æ¢æ¨¡å‹å¯ç”¨çŠ¶æ€
+  // ÇĞ»»Ä£ĞÍÆôÓÃ×´Ì¬
   const toggleModelEnabled = (platform: IProvider, model: string, enabled: boolean) => {
     const model_enabled = { ...platform.model_enabled };
     model_enabled[model] = enabled;
@@ -205,7 +208,7 @@ const ModelModalContent: React.FC = () => {
       const errorMessage = result.message || t('common.unknownError');
 
       try {
-        // å…ˆè·å–æœ€æ–°çš„æ•°æ®ï¼Œç¡®ä¿ä¸ä¼šè¦†ç›–å…¶ä»–å¹¶å‘çš„æ›´æ–°
+        // ÏÈ»ñÈ¡×îĞÂµÄÊı¾İ£¬È·±£²»»á¸²¸ÇÆäËû²¢·¢µÄ¸üĞÂ
         const latestData = await ipcBridge.mode.listProviders.invoke();
         const latestPlatform = (latestData || []).find((item) => item.id === platform.id);
         const model_health = { ...latestPlatform?.model_health };
@@ -245,7 +248,7 @@ const ModelModalContent: React.FC = () => {
       });
 
       try {
-        // å…ˆè·å–æœ€æ–°çš„æ•°æ®ï¼Œç¡®ä¿ä¸ä¼šè¦†ç›–å…¶ä»–å¹¶å‘çš„æ›´æ–°
+        // ÏÈ»ñÈ¡×îĞÂµÄÊı¾İ£¬È·±£²»»á¸²¸ÇÆäËû²¢·¢µÄ¸üĞÂ
         const latestData = await ipcBridge.mode.listProviders.invoke();
         const latestPlatform = (latestData || []).find((item) => item.id === platform.id);
         const model_health = { ...latestPlatform?.model_health };
@@ -431,20 +434,20 @@ const ModelModalContent: React.FC = () => {
                               className='cursor-pointer hover:text-t-primary transition-colors'
                               onClick={() => setCollapseKey((prev) => ({ ...prev, [platform.id]: !isExpanded }))}
                             >
-                              {t('settings.modelCount')}ï¼ˆ{(platform.models ?? []).length}ï¼‰
+                              {t('settings.modelCount')}£¨{(platform.models ?? []).length}£©
                             </span>
                             <span className='mx-6px'>|</span>
                             <span
                               className='cursor-pointer hover:text-t-primary transition-colors'
                               onClick={() => editModalCtrl.open({ data: platform })}
                             >
-                              {t('settings.apiKeyCount')}ï¼ˆ{getApiKeyCount(platform.api_key)}ï¼‰
+                              {t('settings.apiKeyCount')}£¨{getApiKeyCount(platform.api_key)}£©
                             </span>
                           </span>
                           <span className='text-12px text-t-secondary whitespace-nowrap md:hidden'>
                             {(platform.models ?? []).length} / {getApiKeyCount(platform.api_key)}
                           </span>
-                          {/* ä¾›åº”å•†å¯ç”¨å¼€å…³ / Provider enable switch */}
+                          {/* ¹©Ó¦ÉÌÆôÓÃ¿ª¹Ø / Provider enable switch */}
                           <Switch
                             size='small'
                             checked={getProviderState(platform).checked}
@@ -488,13 +491,13 @@ const ModelModalContent: React.FC = () => {
                         <div key={model}>
                           <div className='flex items-center justify-between px-8px py-12px transition-colors hover:bg-[var(--fill-0)]'>
                             <div className='flex items-center gap-8px'>
-                              {/* å¥åº·çŠ¶æ€æŒ‡ç¤ºå™¨ / Health status indicator */}
+                              {/* ½¡¿µ×´Ì¬Ö¸Ê¾Æ÷ / Health status indicator */}
                               {healthStatus !== 'unknown' && (
                                 <Tooltip
                                   content={
                                     <div>
                                       <div className='flex items-center gap-4px'>
-                                        <span>{healthStatus === 'healthy' ? 'âœ…' : 'âŒ'}</span>
+                                        <span>{healthStatus === 'healthy' ? '?' : '?'}</span>
                                         <span>
                                           {healthStatus === 'healthy' ? t('common.success') : t('common.failed')}
                                         </span>
@@ -523,7 +526,7 @@ const ModelModalContent: React.FC = () => {
 
                               <span className='text-14px text-t-primary'>{model}</span>
 
-                              {/* New API åè®®æ ‡ç­¾ï¼ˆç‚¹å‡»å¾ªç¯åˆ‡æ¢ï¼‰/ New API protocol badge (click to cycle) */}
+                              {/* New API Ğ­Òé±êÇ©£¨µã»÷Ñ­»·ÇĞ»»£©/ New API protocol badge (click to cycle) */}
                               {isNewApiProvider && (
                                 <Tag
                                   size='small'
@@ -540,7 +543,7 @@ const ModelModalContent: React.FC = () => {
                                 </Tag>
                               )}
 
-                              {/* æ¨¡å‹å¯ç”¨å¼€å…³ / Model enable switch */}
+                              {/* Ä£ĞÍÆôÓÃ¿ª¹Ø / Model enable switch */}
                               <Switch
                                 size='small'
                                 checked={isModelEnabled(platform, model)}
@@ -549,7 +552,7 @@ const ModelModalContent: React.FC = () => {
                             </div>
 
                             <div className='flex items-center gap-6px shrink-0'>
-                              {/* å¿ƒè·³æ£€æµ‹æŒ‰é’® / Health check button */}
+                              {/* ĞÄÌø¼ì²â°´Å¥ / Health check button */}
                               <Tooltip content={t('settings.healthCheck')}>
                                 <Button
                                   size='mini'
@@ -564,7 +567,7 @@ const ModelModalContent: React.FC = () => {
                                 title={t('settings.deleteModelConfirm')}
                                 onOk={() => {
                                   const newModels = platform.models.filter((item: string) => item !== model);
-                                  // åŒæ—¶æ¸…ç†æ¨¡å‹ç›¸å…³çŠ¶æ€ï¼Œé¿å…åˆ é™¤åé‡åŠ æ¨¡å‹æ—¶å¤ç”¨è„çŠ¶æ€
+                                  // Í¬Ê±ÇåÀíÄ£ĞÍÏà¹Ø×´Ì¬£¬±ÜÃâÉ¾³ıºóÖØ¼ÓÄ£ĞÍÊ±¸´ÓÃÔà×´Ì¬
                                   // Clean all per-model state to avoid stale state on re-add.
                                   const newProtocols = { ...platform.model_protocols };
                                   const newModelEnabled = { ...platform.model_enabled };

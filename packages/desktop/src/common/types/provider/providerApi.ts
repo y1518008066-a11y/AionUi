@@ -34,11 +34,16 @@ export interface CreateProviderRequest {
   model_health?: IProvider['model_health'];
   bedrock_config?: IProvider['bedrock_config'];
   is_full_url?: boolean;
+  dual_route?: {
+    local_url: string;
+    cloud_url: string;
+    cloud_api_key: string;
+  };
 }
 
 /**
  * Partial-update shape for `PUT /api/providers/:id`.
- * Every field is optional â€” only fields sent are updated.
+ * Every field is optional ¡ª only fields sent are updated.
  */
 export interface UpdateProviderRequest {
   platform?: string;
@@ -54,6 +59,11 @@ export interface UpdateProviderRequest {
   model_health?: IProvider['model_health'];
   bedrock_config?: IProvider['bedrock_config'];
   is_full_url?: boolean;
+  dual_route?: {
+    local_url: string;
+    cloud_url: string;
+    cloud_api_key: string;
+  };
 }
 
 /**
@@ -69,7 +79,7 @@ export interface FetchModelsResponse {
 
 /**
  * Anonymous fetch-models request used by the pre-create form flow.
- * No provider row needs to exist yet â€” credentials travel in the body.
+ * No provider row needs to exist yet ¡ª credentials travel in the body.
  */
 export interface FetchModelsAnonymousRequest {
   platform: string;
