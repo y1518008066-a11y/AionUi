@@ -41,6 +41,11 @@ contextBridge.exposeInMainWorld('electronAPI', {
   },
   // 获取拖拽文件/目录的绝对路径 / Get absolute path for dragged file/directory
   getPathForFile: (file: File) => webUtils.getPathForFile(file),
+  // Plugin Marketplace — install/uninstall via IPC
+  installPlugin: (pluginId, sourcePath) => ipcRenderer.invoke("plugin:install", { pluginId, sourcePath }),
+  uninstallPlugin: (pluginId, fullRemove) => ipcRenderer.invoke("plugin:uninstall", { pluginId, fullRemove }),
+  getInstalledPlugins: () => ipcRenderer.invoke("plugin:list-installed"),
+  getPluginVersion: (pluginId) => ipcRenderer.invoke("plugin:get-version", pluginId),
   // Feedback: collect and compress recent log files
   collectFeedbackLogs: () => ipcRenderer.invoke('feedback:collect-logs'),
   // Feedback: capture a screenshot of the current window

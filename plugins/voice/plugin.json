@@ -1,0 +1,24 @@
+{
+    "id": "com.jarvis.voice",
+    "name": "语音助手",
+    "version": "0.8.0",
+    "author": "Jarvis Team",
+    "description": "语音转文字和文字转语音，支持免提操作",
+    "entry": "index.js",
+    "permissions": [
+        "audio:input",
+        "audio:output",
+        "filesystem:write"
+    ],
+    "capabilities": [
+        "voice",
+        "audio"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+        "work",
+        "game"
+    ],
+    "enabledByDefault": false
+}

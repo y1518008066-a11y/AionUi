@@ -1,0 +1,22 @@
+﻿{
+    "name":  "桌面操控插件",
+    "version":  "1.1.0",
+    "id":  "com.jarvis.computer-use",
+    "description":  "提供桌面状态感知、截图采集、窗口枚举、光标位置、显示器信息和 AI 驱动的屏幕分析能力。",
+    "author":  "Jarvis Team",
+    "entry":  "index.js",
+    "minimumJarvisVersion":  "2.0.0",
+    "dependencies":  [
+
+                     ],
+    "enabledByDefault":  false,
+    "capabilities":  [
+                         "computer-use",
+                         "screen"
+                     ],
+    "permissions":  [
+                        "screen:capture",
+                        "filesystem:write",
+                        "network:outbound"
+                    ]
+}

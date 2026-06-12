@@ -1,0 +1,25 @@
+{
+    "id": "com.jarvis.overlay",
+    "name": "屏幕叠加层",
+    "version": "1.0.0",
+    "author": "Jarvis Team",
+    "description": "屏幕叠加层用于主动辅助，显示信息、通知和交互组件",
+    "entry": "index.js",
+    "permissions": [
+        "ui:overlay",
+        "screen:capture",
+        "ui:notification"
+    ],
+    "capabilities": [
+        "overlay",
+        "ui",
+        "notification"
+    ],
+    "dependencies": [],
+    "minimumJarvisVersion": "2.0.0",
+    "compatibleModes": [
+        "work",
+        "game"
+    ],
+    "enabledByDefault": false
+}

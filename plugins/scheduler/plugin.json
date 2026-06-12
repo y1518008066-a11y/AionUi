@@ -1,0 +1,24 @@
+﻿{
+    "id":  "com.jarvis.scheduler",
+    "name":  "任务调度器",
+    "version":  "1.0.0",
+    "author":  "Jarvis",
+    "description":  "定时任务调度管理",
+    "entry":  "index.js",
+    "permissions":  [
+                        "scheduler"
+                    ],
+    "capabilities":  [
+                         "scheduler"
+                     ],
+    "dependencies":  [
+
+                     ],
+    "minimumJarvisVersion":  "1.0.0",
+    "compatibleModes":  [
+                            "default",
+                            "work",
+                            "game"
+                        ],
+    "enabledByDefault":  true
+}

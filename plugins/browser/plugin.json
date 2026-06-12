@@ -1,0 +1,26 @@
+﻿{
+    "name":  "浏览器插件",
+    "version":  "1.0.0",
+    "id":  "com.jarvis.browser",
+    "description":  "基于 Playwright 的真实浏览器执行层，支持页面导航、DOM 访问、截图、点击、输入、滚动、标签页管理、Cookie 操作和 JavaScript 执行。",
+    "author":  "Jarvis Team",
+    "entry":  "index.js",
+    "minimumJarvisVersion":  "2.0.0",
+    "dependencies":  [
+
+                     ],
+    "enabledByDefault":  false,
+    "capabilities":  [
+                         "browser",
+                         "screen",
+                         "network"
+                     ],
+    "permissions":  [
+                        "screen:capture",
+                        "network:outbound",
+                        "network:inbound",
+                        "filesystem:read",
+                        "filesystem:write",
+                        "process:spawn"
+                    ]
+}

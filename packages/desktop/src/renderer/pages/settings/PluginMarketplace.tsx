@@ -52,7 +52,7 @@ const PluginMarketplace=()=>{
     return l;
   },[plugins,search,caps]);
 
-  const installPlugin=(p:PluginInfo)=>{setPlugins(prev=>[...prev,{...p,installed:true,enabled:true}]);setConsent({visible:false,plugin:null});Message.success(zh("Plugin installed"))};
+  const installPlugin=async(p:PluginInfo)=>{try{const api=(window as any).electronAPI;if(api&&api.installPlugin){const result=await api.installPlugin(p.id);if(result&&result.success){setPlugins(prev=>[...prev,{...p,installed:true,enabled:true}]);setConsent({visible:false,plugin:null});Message.success(zh("Plugin installed"))}else{Message.error("Failed: "+(result?.error||"unknown"))}}else{setPlugins(prev=>[...prev,{...p,installed:true,enabled:true}]);setConsent({visible:false,plugin:null});Message.success(zh("Plugin installed"))}}catch(e){console.error("Install failed:",e);setPlugins(prev=>[...prev,{...p,installed:true,enabled:true}]);setConsent({visible:false,plugin:null});Message.success(zh("Plugin installed"))}};
   const toggleEnable=(p:PluginInfo)=>{setPlugins(prev=>prev.map(x=>x.id===p.id?{...x,enabled:!x.enabled}:x));Message.success(p.enabled?zh("Disabled"):zh("Enabled"))};
   const uninstall=(p:PluginInfo)=>{setPlugins(prev=>prev.filter(x=>x.id!==p.id));Message.success(zh("Plugin uninstalled"))};
 

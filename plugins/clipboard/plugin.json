@@ -1,0 +1,24 @@
+﻿{
+    "id":  "com.jarvis.clipboard",
+    "name":  "剪贴板",
+    "version":  "1.0.0",
+    "author":  "Jarvis",
+    "description":  "剪贴板读写工具",
+    "entry":  "index.js",
+    "permissions":  [
+                        "clipboard"
+                    ],
+    "capabilities":  [
+                         "clipboard"
+                     ],
+    "dependencies":  [
+
+                     ],
+    "minimumJarvisVersion":  "1.0.0",
+    "compatibleModes":  [
+                            "default",
+                            "work",
+                            "game"
+                        ],
+    "enabledByDefault":  true
+}
