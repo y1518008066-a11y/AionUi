@@ -5,14 +5,13 @@
  */
 
 import { ipcMain } from 'electron';
+import { PluginInstaller } from '../plugin-marketplace/installer';
 import { resolve } from 'path';
 
 let installerInstance: any = null;
 
 function getInstaller() {
   if (!installerInstance) {
-    // Static import — electron-vite bundles plugin-marketplace via alias
-    const { PluginInstaller } = require('@plugin-marketplace/installer');
     installerInstance = new PluginInstaller();
     console.log('[PluginBridge] PluginInstaller initialized');
   }

@@ -63,7 +63,6 @@ const mainAliases = {
   '@process': resolve('packages/desktop/src/process'),
   '@worker': resolve('packages/desktop/src/process/worker'),
   '@xterm/headless': resolve('packages/desktop/src/common/utils/shims/xterm-headless.ts'),
-    '@plugin-marketplace': resolve('plugin-marketplace'),
 };
 
 export default defineConfig(({ mode }) => {
