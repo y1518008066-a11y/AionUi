@@ -158,11 +158,11 @@ const PluginMarketplace=()=>{
         </div>
         <div>
           <h3 className="text-16px font-600 text-t-primary mb-12px flex items-center gap-8px"><Puzzle theme="outline" size="18"/>{zh("Installed")}<Tag size="small">{filtered.length}</Tag></h3>
-          {filtered.length===0?<div className="text-13px text-t-tertiary py-24px text-center">{zh("No plugins installed.")}</div>:<div className="grid grid-cols-1 md:grid-cols-2 gap-12px">{filtered.map(p=>renderCard(p,true))}</div>}
+          {filtered.length===0?<div className="text-13px text-t-tertiary py-24px text-center">{zh("No plugins installed.")}</div>:<div className="grid grid-cols-1 md:grid-cols-2 gap-12px">{filtered.map(p=>{const mp=market.find(m=>m.id===p.id);return renderCard(mp?{...p,rating:mp.rating||p.rating,downloads:mp.downloads||p.downloads,verified:mp.verified||p.verified,changelog:mp.changelog||p.changelog,version:mp.version||p.version}:p,true)})}</div>}
         </div>
         <div className="mt-8px">
           <h3 className="text-16px font-600 text-t-primary mb-12px flex items-center gap-8px"><FolderOpen theme="outline" size="18"/>{zh("Available")}<Tag size="small">{market.length}</Tag>{mktLoading&&<Tag size="small" color="arcoblue">加载中...</Tag>}{mktErr&&<Tag size="small" color="red">{mktErr}</Tag>}</h3>
-          {market.length===0&&!mktLoading?<div className="text-13px text-t-tertiary py-24px text-center">{mktErr?"市场暂不可用，请检查网络连接。":zh("No plugins available in marketplace.")}</div>:<div className="grid grid-cols-1 md:grid-cols-2 gap-12px">{market.filter(p=>!plugins.find(l=>l.id===p.id)).map(p=>renderCard(p,false))}</div>}
+          {market.length===0&&!mktLoading?<div className="text-13px text-t-tertiary py-24px text-center">{mktErr?"市场暂不可用，请检查网络连接。":zh("No plugins available in marketplace.")}</div>:<div className="grid grid-cols-1 md:grid-cols-2 gap-12px">{market.map(p=>{const inst=plugins.find(l=>l.id===p.id);return inst?renderCard({...p,...inst,installed:true},true):renderCard(p,false)})}</div>}
         </div>
       </div>
       <DetailDrawer/>
