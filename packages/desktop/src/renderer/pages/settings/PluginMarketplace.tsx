@@ -101,7 +101,7 @@ const PluginMarketplace=()=>{
     return l;
   },[plugins,search,caps]);
 
-  const doInstall=async(p:PluginInfo)=>{try{const api=(window as any).electronAPI;if(api&&api.installPlugin){const result=await api.installPlugin(p.id);if(result&&result.success){setPlugins(prev=>[...prev,{...p,installed:true,enabled:true}]);setConsent({visible:false,plugin:null});Message.success(zh("Plugin installed"))}else{Message.error("Failed: "+(result?.error||"unknown"))}}else{setPlugins(prev=>[...prev,{...p,installed:true,enabled:true}]);setConsent({visible:false,plugin:null});Message.success(zh("Plugin installed"))}}catch(e){console.error("Install failed:",e);setPlugins(prev=>[...prev,{...p,installed:true,enabled:true}]);setConsent({visible:false,plugin:null});Message.success(zh("Plugin installed"))}};
+  const doInstall=async(p:PluginInfo)=>{const api=(window as any).electronAPI;if(!api||!api.installPlugin){Message.error("Plugin API not available. Please restart AionUi.");return;}try{const result=await api.installPlugin(p.id);console.log("[Marketplace] installPlugin result:", result);if(result&&result.success){setPlugins(prev=>[...prev,{...p,installed:true,enabled:true}]);setConsent({visible:false,plugin:null});Message.success(zh("Plugin installed"))}else{Message.error("Failed: "+(result?.error||"unknown"))}}catch(e){console.error("Install failed:",e);Message.error("Install error: "+String(e))}};
 
   const installPlugin=async(p:PluginInfo)=>{const missingDeps=(p.dependencies||[]).filter(depId=>!plugins.find(pl=>pl.id===depId)?.installed);if(missingDeps.length>0){const deps=market.filter(m=>missingDeps.includes(m.id));if(deps.length>0){setDepModal({visible:true,plugin:p,deps});return}}setConsent({visible:true,plugin:p})};
 
