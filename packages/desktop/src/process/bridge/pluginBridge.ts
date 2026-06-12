@@ -4,24 +4,16 @@
  * renderer can install/uninstall plugins via IPC.
  */
 
-import { ipcMain, app } from 'electron';
+import { ipcMain } from 'electron';
 import { PluginInstaller } from '../plugin-marketplace/installer';
 import { resolve, join } from 'path';
 
 /** Get the project root, accounting for Electron packaging. */
+/** Get the project root from the bundled __dirname. */
 function getAppRoot(): string {
-  try {
-    // In development: app.getAppPath() returns the project root
-    // In production: returns the app.asar directory
-    const appPath = app.getAppPath();
-    // If we're inside out/, go up one level to project root
-    if (appPath.endsWith('out') || appPath.endsWith('out/') || appPath.endsWith('out\\')) {
-      return resolve(appPath, '..');
-    }
-    return appPath;
-  } catch {
-    return process.cwd();
-  }
+  // In electron-vite bundle, __dirname = out/
+  // Go up 1 level to project root
+  return resolve(__dirname, '..');
 }
 import { existsSync } from 'fs';
 
