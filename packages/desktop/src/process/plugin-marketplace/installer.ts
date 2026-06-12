@@ -35,7 +35,7 @@ import { loadManifest } from '../plugin-runtime/manifest';
 // Constants
 // ---------------------------------------------------------------------------
 
-const PLUGINS_ROOT = resolve(path.dirname(path.dirname(absSource)), 'plugins');
+const PLUGINS_ROOT = resolve(__dirname, "..", "..", "..", "..", "..", "plugins");
 const INSTALLED_DIR = join(PLUGINS_ROOT, 'installed');
 const DOWNLOADED_DIR = join(PLUGINS_ROOT, 'downloaded');
 const DISABLED_DIR = join(PLUGINS_ROOT, 'disabled');
