@@ -26,7 +26,7 @@ import {
   cpSync,
   renameSync,
 } from 'fs';
-import { resolve, join, basename } from 'path';
+import { resolve, join, basename, dirname } from 'path';
 import { createHash } from 'crypto';
 import type { InstallSource, InstallResult, UninstallResult, PluginManifest } from './types';
 import { loadManifest } from '../plugin-runtime/manifest';
@@ -136,7 +136,38 @@ class PluginInstaller {
    * Install from a local directory.
    */
   private installFromPath(sourcePath: string, warnings: string[]): InstallResult {
-    const absSource = resolve(sourcePath);
+    let absSource = resolve(sourcePath);
+
+    // If source doesn't exist, try to resolve pluginId -> directory name
+    if (!existsSync(absSource)) {
+      // Try stripping "com.jarvis." prefix
+      const shortName = basename(sourcePath).replace(/^com\.jarvis\./, '');
+      if (shortName !== basename(sourcePath)) {
+        const shortPath = resolve(join(dirname(sourcePath), shortName));
+        if (existsSync(shortPath)) {
+          absSource = shortPath;
+        } else {
+          // Scan parent directory for matching plugin.json
+          const pluginsDir = resolve(process.cwd(), 'plugins');
+          if (existsSync(pluginsDir)) {
+            const entries = readdirSync(pluginsDir, { withFileTypes: true });
+            for (const entry of entries) {
+              if (!entry.isDirectory()) continue;
+              const manifestPath = join(pluginsDir, entry.name, 'plugin.json');
+              if (existsSync(manifestPath)) {
+                try {
+                  const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'));
+                  if (manifest.id === basename(sourcePath)) {
+                    absSource = join(pluginsDir, entry.name);
+                    break;
+                  }
+                } catch { /* skip */ }
+              }
+            }
+          }
+        }
+      }
+    }
 
     if (!existsSync(absSource)) {
       return {
