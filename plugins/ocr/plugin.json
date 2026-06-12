@@ -1,26 +1,26 @@
 {
-    "id": "com.jarvis.ocr",
-    "name": "OCR文字识别",
-    "version": "0.8.0",
-    "author": "Jarvis Team",
-    "description": "截图和图片的光学字符识别，从视觉内容中提取文字",
-    "entry": "index.js",
-    "permissions": [
-        "screen:capture",
-        "filesystem:write",
-        "network:outbound"
-    ],
-    "capabilities": [
-        "ocr",
-        "vision",
-        "screen"
-    ],
-    "dependencies": [
-        "com.jarvis.vision"
-    ],
-    "minimumJarvisVersion": "2.0.0",
-    "compatibleModes": [
-        "work"
-    ],
-    "enabledByDefault": false
+  "id": "com.jarvis.ocr",
+  "name": "OCR文字识别",
+  "version": "0.8.0",
+  "author": "Jarvis Team",
+  "description": "截图和图片的光学字符识别，从视觉内容中提取文字。",
+  "entry": "index.js",
+  "permissions": [
+    "screen:capture",
+    "filesystem:write",
+    "network:outbound"
+  ],
+  "capabilities": [
+    "ocr",
+    "vision",
+    "screen"
+  ],
+  "dependencies": [
+    "com.jarvis.vision"
+  ],
+  "minimumJarvisVersion": "2.0.0",
+  "compatibleModes": [
+    "work"
+  ],
+  "enabledByDefault": false
 }

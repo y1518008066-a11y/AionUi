@@ -6,7 +6,42 @@
 
 import { ipcMain } from 'electron';
 import { PluginInstaller } from '../plugin-marketplace/installer';
-import { resolve } from 'path';
+import { resolve, join } from 'path';
+import { existsSync } from 'fs';
+
+/**
+ * Resolve plugin directory from pluginId.
+ * Maps "com.jarvis.overlay" → "plugins/overlay"
+ */
+function resolvePluginDir(pluginId: string): string {
+  // Strategy 1: strip "com.jarvis." prefix
+  const shortName = pluginId.replace(/^com\.jarvis\./, '');
+  const shortPath = resolve(process.cwd(), 'plugins', shortName);
+  if (existsSync(join(shortPath, 'plugin.json'))) return shortPath;
+
+  // Strategy 2: try full id as directory name (legacy)
+  const fullPath = resolve(process.cwd(), 'plugins', pluginId);
+  if (existsSync(join(fullPath, 'plugin.json'))) return fullPath;
+
+  // Strategy 3: scan plugins dir for matching id in plugin.json
+  const pluginsDir = resolve(process.cwd(), 'plugins');
+  if (existsSync(pluginsDir)) {
+    const { readdirSync } = require('fs');
+    for (const entry of readdirSync(pluginsDir, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      const manifestPath = join(pluginsDir, entry.name, 'plugin.json');
+      if (existsSync(manifestPath)) {
+        try {
+          const manifest = JSON.parse(require('fs').readFileSync(manifestPath, 'utf8'));
+          if (manifest.id === pluginId) return join(pluginsDir, entry.name);
+        } catch { /* skip */ }
+      }
+    }
+  }
+
+  // Fallback: return short path (caller will report error if not found)
+  return shortPath;
+}
 
 let installerInstance: any = null;
 
@@ -23,7 +58,7 @@ export function initPluginBridge(): void {
   ipcMain.handle('plugin:install', async (_event, params: { pluginId: string; sourcePath?: string }) => {
     try {
       const installer = getInstaller();
-      const sourcePath = params.sourcePath || resolve(process.cwd(), 'plugins', params.pluginId);
+      const sourcePath = params.sourcePath || resolvePluginDir(params.pluginId);
       
       const result = await installer.install({
         type: 'local-path',

@@ -1,0 +1,19 @@
+{
+    "permissions":  [
+                        "clipboard:read"
+                    ],
+    "id":  "com.jarvis.hello",
+    "capabilities":  [
+                         "clipboard"
+                     ],
+    "minimumJarvisVersion":  "2.0.0",
+    "version":  "1.0.0",
+    "enabledByDefault":  false,
+    "description":  "演示插件运行时基础功能的简单示例",
+    "author":  "Jarvis Team",
+    "name":  "示例插件",
+    "dependencies":  [
+
+                     ],
+    "entry":  "index.js"
+}
